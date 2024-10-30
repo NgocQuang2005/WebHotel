@@ -1,0 +1,1205 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="Admin.master.cs" Inherits="hotel.Admin.Admin" %>
+
+<!DOCTYPE html>
+
+<html
+lang="en"
+class="light-style layout-menu-fixed layout-compact"
+dir="ltr"
+data-theme="theme-default"
+data-assets-path="../assets/"
+data-template="vertical-menu-template-free">
+<head>
+    <meta charset="utf-8" />
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0" />
+
+    <title>Admin</title>
+
+    <meta name="description" content="" />
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/x-icon" href="../App_Themes/Admin_Pages/Layout/assets/img/favicon/favicon.ico" />
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Public+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&display=swap" rel="stylesheet" />
+
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" integrity="sha512-1ycn6IcaQQ40/MKBW2W4Rhis/DbILU74C1vSrLJxCq57o941Ym01SwNsOMqvEBFlcgUa6xLiPY/NS5R+E6ztJQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+    <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
+    <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
+
+
+    <!-- Quill Editor -->
+    <link href="https://cdn.jsdelivr.net/npm/quill@2.0.2/dist/quill.snow.css" rel="stylesheet" />
+
+    <!-- Core CSS -->
+    <link rel="stylesheet" href="../App_Themes/Admin_Pages/Layout/assets/vendor/fonts/boxicons.css" />
+    <link rel="stylesheet" href="../App_Themes/Admin_Pages/Layout/assets/vendor/css/core.css" class="template-customizer-core-css" />
+    <link rel="stylesheet" href="../App_Themes/Admin_Pages/Layout/assets/vendor/css/theme-default.css" class="template-customizer-theme-css" />
+    <link rel="stylesheet" href="../App_Themes/Admin_Pages/Layout/assets/css/demo.css" />
+
+    <!-- Vendors CSS -->
+    <link rel="stylesheet" href="../App_Themes/Admin_Pages/Layout/assets/vendor/libs/perfect-scrollbar/perfect-scrollbar.css" />
+    <link rel="stylesheet" href="../App_Themes/Admin_Pages/Layout/assets/vendor/libs/apex-charts/apex-charts.css" />
+
+    <!-- Helpers -->
+    <script src="../App_Themes/Admin_Pages/Layout/assets/vendor/js/helpers.js"></script>
+
+    <!-- Config -->
+    <script src="../App_Themes/Admin_Pages/Layout/assets/js/config.js"></script>
+
+    <asp:ContentPlaceHolder ID="head" runat="server">
+    </asp:ContentPlaceHolder>
+    <style>
+        /*a {
+            text-decoration: none;
+        }
+*/
+        h2 {
+            color: #696cff !important;
+        }
+
+        body {
+            background-color: #f5f5f9;
+        }
+
+        /*.leftmenu .nav-tabs.nav-stacked > li.dropdown > a {
+            font-family: math;
+        }*/
+
+        .bdlayout {
+            border-color: #d9dee3;
+            border-radius: 0.5rem;
+            box-shadow: 0 2px 6px 0 rgba(67, 89, 113, 0.12);
+            background-color: #fff;
+        }
+
+        img {
+            object-fit: cover !important;
+        }
+
+        .pointer {
+            cursor: pointer;
+            margin-top: 9px;
+        }
+
+        /*.chevron {
+            padding-left: 63px;
+        }*/
+        .posi {
+            position: relative;
+        }
+
+        .posisp {
+            position: absolute;
+            right: 0;
+        }
+
+        .logout {
+            float: right;
+            margin-right: 11px;
+        }
+
+        .dxx {
+            background-color: #99CDD8;
+            border: 1px solid #99CDD8;
+        }
+
+            .dxx:hover {
+                background-color: #2D4354;
+                border: 1px solid #2D4354;
+                color: #fff;
+            }
+
+        .overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.5);
+            display: none;
+            z-index: 1111;
+        }
+
+        /* CSS cho popup */
+        .popup {
+            position: fixed;
+            top: 34%;
+            left: 50%;
+            width: 100%;
+            max-width: 460px;
+            transform: translate(-50%, -50%);
+            background-color: white;
+            padding: 20px 20px 50px 20px;
+            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+            z-index: 1112;
+            display: none;
+        }
+
+        /* CSS cho nút đóng */
+        .close-btn {
+            background-color: #fff;
+            border-radius: 0.5rem;
+            opacity: 1;
+            padding: 3px 7px;
+            box-shadow: 0 0.125rem 0.25rem rgba(161, 172, 184, 0.4);
+            transition: all 0.23s ease 0.1s;
+            transform: translate(23px, -25px);
+            border: none;
+            cursor: pointer;
+            float: right;
+        }
+
+        .logoutyes {
+            padding: 5px 20px;
+            font-size: 15px;
+            border-radius: 6px;
+        }
+
+
+
+        input[type=checkbox] {
+            opacity: 1 !important;
+            margin-top: 0px !important;
+        }
+
+        .datetm {
+            width: 100%;
+            border-radius: 4px;
+            padding: 3px 0px;
+            border: 1px solid;
+        }
+
+        .selectr {
+            width: 100%;
+            border-radius: 5px;
+        }
+
+        td.stast {
+            text-align: start !important;
+        }
+
+        .selc {
+            width: 170px;
+            padding: 6px 0px;
+            border-radius: 5px;
+            border: 1px solid black;
+            margin-bottom: 12px;
+        }
+
+        .select2-container {
+            margin-bottom: 2px !important;
+        }
+
+        th {
+            text-align: center;
+        }
+
+        table {
+            margin-left: 30px;
+            margin-top: 15px;
+        }
+
+        .rb {
+            border-right: 1px solid black !important;
+            border-bottom: 1px solid black !important;
+        }
+
+        .b {
+            border-bottom: 1px solid black !important;
+        }
+
+        .trb {
+            border-top: 1px solid black !important;
+            border-right: 1px solid black !important;
+            border-bottom: 1px solid black !important;
+        }
+
+        thead, tbody, tfoot, tr, td, th {
+            border-color: inherit !important;
+            /* border-style: solid; */
+            border-width: 0 !important;
+        }
+
+        .tb {
+            border-top: 1px solid black !important;
+            border-bottom: 1px solid black !important;
+        }
+
+        .text-right {
+            text-align: right;
+            font-size: 16px;
+        }
+
+        #tblEmpDetails {
+            width: 99%;
+            border: 1px solid black;
+            padding: 0px;
+            margin: 10px 0px 0px 11px;
+            border-collapse: collapse;
+        }
+
+            #tblEmpDetails td {
+                padding: 5px;
+            }
+
+        .normalRow {
+            background-color: #EFEFEF;
+        }
+
+        h3 {
+            padding: 9px 15px;
+            background: #86abcf;
+            opacity: 0.5;
+            color: #fff;
+            border-radius: 11px 11px 0px 0px;
+            margin: -7px;
+        }
+
+        h2 {
+            padding: 13px 0px 13px 10px;
+            color: #696cff !important;
+            background: #99cdd8;
+            font-size: 24px;
+            border-radius: 10px 10px 0px 0px;
+        }
+
+            h2 > span {
+                text-transform: uppercase;
+                padding-left: 10px;
+                font-size: 18px;
+            }
+
+        .altRow {
+            background-color: #EEEEEE;
+        }
+
+        .crud_iput {
+            width: 100%;
+            padding: 4px 5px;
+            border-radius: 5px;
+            border: 1px solid;
+        }
+
+        .crud_button {
+            padding: 5px 30px;
+            border-radius: 5px;
+            background-image: linear-gradient(to right, rgb(242, 112, 156), rgb(255, 148, 114));
+            border: none;
+        }
+
+        .search {
+            margin: 20px 10px;
+        }
+
+        .search_input {
+            padding: 4px 10px;
+            width: 364px;
+            border-radius: 5px;
+            border: 1px solid;
+            margin-bottom: 14px;
+        }
+
+        .search p {
+            font-size: 20px;
+        }
+
+
+
+        .content_crud {
+            margin: 20px 0px;
+            padding-bottom: 20px;
+        }
+
+        .content_cruds {
+            margin: 20px 0px;
+            padding: 5px 7px;
+        }
+
+        td {
+            padding: 5px 10px !important;
+        }
+
+        .btnSearchr {
+            margin-bottom: 4px;
+            padding: 9px 33px !important;
+        }
+
+        .asnew {
+            right: 10px;
+            top: 4px;
+            color: black;
+        }
+
+        .numbernav {
+            font-size: 17px;
+            position: absolute;
+            color: #fff;
+            background-color: #86abcf;
+            padding: 1px 6px;
+            border-radius: 50%;
+            right: 34px;
+            top: -6px;
+        }
+
+        .titelnav {
+            font-size: 10px;
+            position: absolute;
+            bottom: -11px;
+        }
+
+        .iconnav {
+            font-size: 30px;
+            padding-right: 46px;
+            color: #373737;
+        }
+
+            .iconnav:hover {
+                color: #2b2bf89e;
+            }
+
+        #pageNavPosition {
+            margin-top: 16px;
+        }
+
+        #toast {
+            position: fixed;
+            top: 32px;
+            right: 32px;
+            z-index: 999999;
+        }
+
+        .toast {
+            display: flex;
+            align-items: center;
+            background-color: #fff;
+            border-radius: 2px;
+            padding: 20px 0;
+            min-width: 400px;
+            max-width: 450px;
+            border-left: 4px solid;
+            box-shadow: 0 5px 8px rgba(0, 0, 0, 0.08);
+            transition: all linear 0.3s;
+        }
+
+        @keyframes slideInLefts {
+            from {
+                opacity: 0;
+                transform: translateX(calc(100% + 32px));
+            }
+
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        @keyframes fadeOut {
+            to {
+                opacity: 0;
+            }
+        }
+
+        .toast--success {
+            border-color: #47d864;
+        }
+
+            .toast--success .toast__icon {
+                color: #47d864;
+            }
+
+        .toast--info {
+            border-color: #2f86eb;
+        }
+
+            .toast--info .toast__icon {
+                color: #2f86eb;
+            }
+
+        .toast--warning {
+            border-color: #ffc021;
+        }
+
+            .toast--warning .toast__icon {
+                color: #ffc021;
+            }
+
+        .toast--error {
+            border-color: #ff623d;
+        }
+
+            .toast--error .toast__icon {
+                color: #ff623d;
+            }
+
+        .toast + .toast {
+            margin-top: 24px;
+        }
+
+        .toast__icon {
+            font-size: 24px;
+        }
+
+        .toast__icon,
+        .toast__close {
+            padding: 0 16px;
+        }
+
+        .toast__body {
+            flex-grow: 1;
+        }
+
+        .toast__title {
+            font-size: 16px;
+            font-weight: 600;
+            color: #333;
+        }
+
+        .toast__msg {
+            font-size: 14px;
+            color: #888;
+            margin-top: 6px;
+            line-height: 1.5;
+        }
+
+        .toast__close {
+            font-size: 20px;
+            color: rgba(0, 0, 0, 0.3);
+            cursor: pointer;
+        }
+
+        .select2-container--default .select2-selection--single {
+            background-color: #fff !important;
+            border: 1px solid #0e0e0e !important;
+            border-radius: 5px !important;
+            height: 32.4px !important;
+            padding-top: 3px !important;
+        }
+
+            .select2-container--default .select2-selection--single .select2-selection__placeholder {
+                color: black !important;
+            }
+
+            .select2-container--default .select2-selection--single .select2-selection__arrow {
+                height: 31px !important;
+            }
+
+        .select2-container .select2-selection--single .select2-selection__rendered {
+            padding-left: 4px !important;
+        }
+
+
+        .edittt {
+            padding: 20px 15px 50px 15px;
+            margin: 40px 20px;
+        }
+
+
+        .formedit {
+            display: flex;
+            justify-content: space-around;
+            margin-bottom: 25px;
+            flex-wrap: wrap;
+        }
+
+        .form-control {
+            width: 100%;
+            padding: 8px 16px;
+            border-radius: 6px;
+        }
+
+        .formedit_div {
+            width: 450px;
+                margin-bottom: 22px;
+        }
+
+        .formedit_lable {
+            padding-bottom: 7px;
+            font-size: 16px;
+            color: #86abcf;
+        }
+
+        .edit_bt {
+            border: 1px solid #375b8b;
+            color: black;
+            padding: 6px 13px;
+            border-radius: 8px;
+            margin-right: 16px;
+            background-color: white;
+        }
+
+            .edit_bt:hover {
+                background-color: #375b8b;
+                color: #fff;
+            }
+
+        .edit_a {
+            border: 1px solid #f3b699;
+            color: black;
+            padding: 6px 13px;
+            border-radius: 8px;
+            font-size: 13px;
+        }
+
+            .edit_a:hover {
+                background-color: #f3b699;
+                color: #fff;
+            }
+
+        .imguser {
+            border-radius: 5px;
+            width: 100px;
+            height: 100px;
+        }
+
+        .buttonEvent {
+            display: flex;
+            position: absolute;
+            right: 27px;
+            bottom: -55px;
+            width: 150px;
+            justify-content: space-between;
+        }
+    </style>
+    <script>
+        function Pager(tableName, itemsPerPage) {
+            this.tableName = tableName; // Tên của bảng
+            this.itemsPerPage = itemsPerPage; // Số mục trên mỗi trang
+            this.currentPage = 1; // Trang hiện tại, mặc định là trang 1
+            this.pages = 0; // Tổng số trang
+            this.inited = false; // Trạng thái khởi tạo
+
+            // Hàm hiển thị các hàng từ 'from' đến 'to'
+            this.showRecords = function (from, to) {
+                var rows = document.getElementById(tableName).rows;
+                for (var i = 1; i < rows.length; i++) {
+                    if (i < from || i > to)
+                        rows[i].style.display = 'none';
+                    else
+                        rows[i].style.display = '';
+                }
+            }
+
+            // Hàm hiển thị trang 'pageNumber'
+            this.showPage = function (pageNumber) {
+                if (!this.inited) {
+                    alert("not inited");
+                    return;
+                }
+                var oldPageAnchor = document.getElementById('pg' + this.currentPage);
+                if (oldPageAnchor) {
+                    oldPageAnchor.className = 'pg-normal';
+                }
+
+                this.currentPage = pageNumber;
+                var newPageAnchor = document.getElementById('pg' + this.currentPage);
+                if (newPageAnchor) {
+                    newPageAnchor.className = 'pg-selected';
+                }
+
+                var from = (pageNumber - 1) * itemsPerPage + 1;
+                var to = from + itemsPerPage - 1;
+                this.showRecords(from, to);
+                this.showPageNav('pager', 'pageNavPosition');  // Cập nhật các nút phân trang
+            }
+
+            // Hàm hiển thị trang trước
+            this.prev = function () {
+                if (this.currentPage > 1)
+                    this.showPage(this.currentPage - 1);
+            }
+
+            // Hàm hiển thị trang kế tiếp
+            this.next = function () {
+                if (this.currentPage < this.pages) {
+                    this.showPage(this.currentPage + 1);
+                }
+            }
+
+            // Hàm khởi tạo phân trang
+            this.init = function () {
+                var rows = document.getElementById(tableName).rows;
+                var records = (rows.length - 1);
+                this.pages = Math.ceil(records / itemsPerPage);
+                this.inited = true;
+            }
+
+            // Hàm hiển thị các nút phân trang
+            this.showPageNav = function (pagerName, positionId) {
+                if (!this.inited) {
+                    alert("not inited");
+                    return;
+                }
+                var element = document.getElementById(positionId);
+                var pagerHtml = '<span class="pg-normal" onclick="' + pagerName + '.prev();">&#171</span> ';
+
+                if (this.pages <= 4) { // Nếu số trang <= 4, hiển thị tất cả các trang
+                    for (var page = 1; page <= this.pages; page++) {
+                        pagerHtml += '<span id="pg' + page + '" class="pg-normal" onclick="' + pagerName +
+                            '.showPage(' + page + ');">' + page + '</span> ';
+                    }
+                } else {
+                    pagerHtml += '<span id="pg1" class="pg-normal" onclick="' + pagerName +
+                        '.showPage(1);">1</span> ';
+
+                    if (this.currentPage > 3) {
+                        pagerHtml += '<span>...</span> ';
+                    }
+
+                    var startPage = Math.max(2, this.currentPage - 1);
+                    var endPage = Math.min(this.pages - 1, this.currentPage + 1);
+
+                    if (startPage > 2) {
+                        pagerHtml += '<span>...</span> ';
+                    }
+
+                    for (var page = startPage; page <= endPage; page++) {
+                        pagerHtml += '<span id="pg' + page + '" class="pg-normal" onclick="' + pagerName +
+                            '.showPage(' + page + ');">' + page + '</span> ';
+                    }
+
+                    if (endPage < this.pages - 1) {
+                        pagerHtml += '<span>...</span> ';
+                    }
+
+                    pagerHtml += '<span id="pg' + this.pages + '" class="pg-normal" onclick="' + pagerName +
+                        '.showPage(' + this.pages + ');">' + this.pages + '</span> ';
+                }
+
+                pagerHtml += '<span class="pg-normal" onclick="' + pagerName + '.next();">&#187;</span>';
+
+                element.innerHTML = pagerHtml;
+
+                // Đánh dấu trang hiện tại
+                var currentPageAnchor = document.getElementById('pg' + this.currentPage);
+                if (currentPageAnchor) {
+                    currentPageAnchor.className = 'pg-selected';
+                }
+            }
+        }
+
+        // Thêm CSS cho phân trang và trang đang hoạt động
+        var style = document.createElement('style');
+        style.innerHTML = `
+                    .pg-normal {
+                        cursor: pointer;
+                        margin: 0 2px;
+                        padding: 5px 10px;
+                        border: 1px solid #ddd;
+                        border-radius: 4px;
+                    }
+                    .pg-selected {
+                        background-color: #007bff;
+                        color: white;
+                        border: 1px solid #007bff;
+                        border-radius: 4px;
+                        padding: 5px 10px;
+                        margin: 0 2px;
+                        cursor: default;
+                    }
+                `;
+        document.head.appendChild(style);
+
+
+    </script>
+</head>
+<body>
+    <form id="form1" runat="server">
+        <asp:ScriptManager ID="ScriptManager1" runat="server"></asp:ScriptManager>
+        <div class="layout-wrapper layout-content-navbar">
+            <div class="layout-container">
+                <aside id="layout-menu" class="layout-menu menu-vertical menu bg-menu-theme">
+                    <div class="app-brand demo">
+                        <a href="Home.aspx" class="app-brand-link">
+                            <span class="app-brand-logo demo">
+                                <svg width="25"
+                                    viewBox="0 0 25 42"
+                                    version="1.1"
+                                    xmlns="http://www.w3.org/2000/svg"
+                                    xmlns:xlink="http://www.w3.org/1999/xlink">
+                                    <defs>
+                                        <path d="M13.7918663,0.358365126 L3.39788168,7.44174259 C0.566865006,9.69408886 -0.379795268,12.4788597 0.557900856,15.7960551 C0.68998853,16.2305145 1.09562888,17.7872135 3.12357076,19.2293357 C3.8146334,19.7207684 5.32369333,20.3834223 7.65075054,21.2172976 L7.59773219,21.2525164 L2.63468769,24.5493413 C0.445452254,26.3002124 0.0884951797,28.5083815 1.56381646,31.1738486 C2.83770406,32.8170431 5.20850219,33.2640127 7.09180128,32.5391577 C8.347334,32.0559211 11.4559176,30.0011079 16.4175519,26.3747182 C18.0338572,24.4997857 18.6973423,22.4544883 18.4080071,20.2388261 C17.963753,17.5346866 16.1776345,15.5799961 13.0496516,14.3747546 L10.9194936,13.4715819 L18.6192054,7.984237 L13.7918663,0.358365126 Z"
+                                            id="path-1">
+                                        </path>
+                                        <path d="M5.47320593,6.00457225 C4.05321814,8.216144 4.36334763,10.0722806 6.40359441,11.5729822 C8.61520715,12.571656 10.0999176,13.2171421 10.8577257,13.5094407 L15.5088241,14.433041 L18.6192054,7.984237 C15.5364148,3.11535317 13.9273018,0.573395879 13.7918663,0.358365126 C13.5790555,0.511491653 10.8061687,2.3935607 5.47320593,6.00457225 Z"
+                                            id="path-3">
+                                        </path>
+                                        <path d="M7.50063644,21.2294429 L12.3234468,23.3159332 C14.1688022,24.7579751 14.397098,26.4880487 13.008334,28.506154 C11.6195701,30.5242593 10.3099883,31.790241 9.07958868,32.3040991 C5.78142938,33.4346997 4.13234973,34 4.13234973,34 C4.13234973,34 2.75489982,33.0538207 2.37032616e-14,31.1614621 C-0.55822714,27.8186216 -0.55822714,26.0572515 -4.05231404e-15,25.8773518 C0.83734071,25.6075023 2.77988457,22.8248993 3.3049379,22.52991 C3.65497346,22.3332504 5.05353963,21.8997614 7.50063644,21.2294429 Z"
+                                            id="path-4">
+                                        </path>
+                                        <path d="M20.6,7.13333333 L25.6,13.8 C26.2627417,14.6836556 26.0836556,15.9372583 25.2,16.6 C24.8538077,16.8596443 24.4327404,17 24,17 L14,17 C12.8954305,17 12,16.1045695 12,15 C12,14.5672596 12.1403557,14.1461923 12.4,13.8 L17.4,7.13333333 C18.0627417,6.24967773 19.3163444,6.07059163 20.2,6.73333333 C20.3516113,6.84704183 20.4862915,6.981722 20.6,7.13333333 Z"
+                                            id="path-5">
+                                        </path>
+                                    </defs>
+                                    <g id="g-app-brand" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+                                        <g id="Brand-Logo" transform="translate(-27.000000, -15.000000)">
+                                            <g id="Icon" transform="translate(27.000000, 15.000000)">
+                                                <g id="Mask" transform="translate(0.000000, 8.000000)">
+                                                    <mask id="mask-2" fill="white">
+                                                        <use xlink:href="#path-1"></use>
+                                                    </mask>
+                                                    <use fill="#696cff" xlink:href="#path-1"></use>
+                                                    <g id="Path-3" mask="url(#mask-2)">
+                                                        <use fill="#696cff" xlink:href="#path-3"></use>
+                                                        <use fill-opacity="0.2" fill="#FFFFFF" xlink:href="#path-3"></use>
+                                                    </g>
+                                                    <g id="Path-4" mask="url(#mask-2)">
+                                                        <use fill="#696cff" xlink:href="#path-4"></use>
+                                                        <use fill-opacity="0.2" fill="#FFFFFF" xlink:href="#path-4"></use>
+                                                    </g>
+                                                </g>
+                                                <g id="Triangle"
+                                                    transform="translate(19.000000, 11.000000) rotate(-300.000000) translate(-19.000000, -11.000000) ">
+                                                    <use fill="#696cff" xlink:href="#path-5"></use>
+                                                    <use fill-opacity="0.2" fill="#FFFFFF" xlink:href="#path-5"></use>
+                                                </g>
+                                            </g>
+                                        </g>
+                                    </g>
+                                </svg>
+                            </span>
+                            <span class="app-brand-text demo menu-text fw-bold ms-2">Lionn</span>
+                        </a>
+
+                        <a href="javascript:void(0);" class="layout-menu-toggle menu-link text-large ms-auto d-block d-xl-none">
+                            <i class="bx bx-chevron-left bx-sm align-middle"></i>
+                        </a>
+                    </div>
+                    <div class="menu-inner-shadow"></div>
+                    <ul class="menu-inner py-1">
+                        <!--<li class="menu-header small text-uppercase">
+              <span class="menu-header-text">Apps &amp; Pages</span>
+            </li>-->
+                        <!-- Apps -->
+                        <!-- Quản lý nhân sự -->
+                        <li class="menu-item <%= IsOpen(Request.Url.AbsolutePath, "/CrudEmployee.aspx", "/EmployeeSalary.aspx", "/Account.aspx") %>">
+                            <a href="javascript:void(0);" class="menu-link menu-toggle">
+                                <i class="fas fa-users " style="margin-right: 13px;"></i>
+                                <%--<i class="menu-icon tf-icons  bx bx-layout"></i>--%>
+                                <div>Quản lý nhân sự </div>
+                            </a>
+                            <ul class="menu-sub  ">
+                                <li class="menu-item <%= IsActive(Request.Url.AbsolutePath, "/CrudEmployee.aspx") %>">
+                                    <a href="CrudEmployee.aspx" class="menu-link">
+                                        <div>Thông tin nhân viên</div>
+                                    </a>
+                                </li>
+                                <li class="menu-item <%= IsActive(Request.Url.AbsolutePath, "/EmployeeSalary.aspx") %>">
+                                    <a href="EmployeeSalary.aspx" class="menu-link">
+                                        <div>Quản lý lương nhân viên</div>
+                                    </a>
+                                </li>
+                                <li class="menu-item <%= IsActive(Request.Url.AbsolutePath, "/Account.aspx") %>">
+                                    <a href="Account.aspx" class="menu-link">
+                                        <div>Tài khoản </div>
+                                    </a>
+                                </li>
+                            </ul>
+                        </li>
+                        <li class="menu-item <%= IsOpen(Request.Url.AbsolutePath, "/KindOfRoom.aspx", "/CrudRoom.aspx") %>">
+                            <a href="javascript:void(0);" class="menu-link menu-toggle">
+                                <i class="fas fa-door-closed" style="margin-right: 13px;"></i>
+                                <div>Quản lý Phòng </div>
+                            </a>
+                            <ul class="menu-sub">
+                                <li class="menu-item <%= IsActive(Request.Url.AbsolutePath, "/KindOfRoom.aspx") %>">
+                                    <a href="KindOfRoom.aspx" class="menu-link">
+                                        <div>Loại Phòng</div>
+                                    </a>
+                                </li>
+                                <li class="menu-item <%= IsActive(Request.Url.AbsolutePath, "/CrudRoom.aspx") %>">
+                                    <a href="CrudRoom.aspx" class="menu-link">
+                                        <div>Danh sách phòng cụ thể</div>
+                                    </a>
+                                </li>
+                            </ul>
+                        </li>
+                        <li class="menu-item <%= IsOpen(Request.Url.AbsolutePath, "/ListOfReservations.aspx", "/ManageCustomerContacts.aspx", "/Payment.aspx") %>">
+                            <a href="javascript:void(0);" class="menu-link menu-toggle">
+                                <i class="menu-icon tf-icons bx bx-layout"></i>
+                                <div>Quản lý Đặt phòng và Dịch vụ  </div>
+                            </a>
+                            <ul class="menu-sub">
+                                <li class="menu-item <%= IsActive(Request.Url.AbsolutePath, "/ListOfReservations.aspx") %>">
+                                    <a href="ListOfReservations.aspx" class="menu-link">
+                                        <div>Danh sách Đơn Booking</div>
+                                    </a>
+                                </li>
+                                <li class="menu-item <%= IsActive(Request.Url.AbsolutePath, "/ManageCustomerContacts.aspx") %>">
+                                    <a href="ManageCustomerContacts.aspx" class="menu-link">
+                                        <div>Quản lý liên hệ khách hàng</div>
+                                    </a>
+                                </li>
+                                <li class="menu-item <%= IsActive(Request.Url.AbsolutePath, "/Payment.aspx") %>">
+                                    <a href="Payment.aspx" class="menu-link">
+                                        <div>Thanh Toán</div>
+                                    </a>
+                                </li>
+                            </ul>
+                        </li>
+                        <li class="menu-item <%= IsOpen(Request.Url.AbsolutePath , "/ManageWebsiteContent.aspx" )%>">
+                            <a href="javascript:void(0);" class="menu-link menu-toggle">
+                                <i class="fas fa-poll-h" style="margin-right: 13px;"></i>
+                                <div>Quản lý Nội dung Website</div>
+                            </a>
+                            <ul class="menu-sub">
+                                <li class="menu-item <%= IsActive(Request.Url.AbsolutePath, "/ManageWebsiteContent.aspx") %>">
+                                    <a href="ManageWebsiteContent.aspx" class="menu-link">
+                                        <div>Nội dung của website</div>
+                                    </a>
+                                </li>
+                            </ul>
+                        </li>
+                        <li class="menu-item <%= IsOpen(Request.Url.AbsolutePath , "/WarehouseInformation.aspx","/Stock.aspx", "/StockTransfer.aspx","/ImportExportDetail.aspx" ,"/InventoryManagement.aspx")%>">
+                            <a href="javascript:void(0);" class="menu-link menu-toggle">
+                                <i class="fas fa-warehouse" style="margin-right: 13px;"></i>
+                                <div>Quản lý Hoạt Động Kho </div>
+                            </a>
+                            <ul class="menu-sub">
+                                <li class="menu-item <%= IsActive(Request.Url.AbsolutePath, "/WarehouseInformation.aspx") %>">
+                                    <a href="WarehouseInformation.aspx" class="menu-link">
+                                        <div>Danh Sách Kho</div>
+                                    </a>
+                                </li>
+                                <li class="menu-item <%= IsActive(Request.Url.AbsolutePath, "/Stock.aspx") %>">
+                                    <a href="Stock.aspx" class="menu-link">
+                                        <div>Danh Sách Sản Phẩm</div>
+                                    </a>
+                                </li>
+                                <li class="menu-item <%= IsActive(Request.Url.AbsolutePath, "/StockTransfer.aspx") %>">
+                                    <a href="StockTransfer.aspx" class="menu-link">
+                                        <div>Chuyển Hàng Giữa Các Kho</div>
+                                    </a>
+                                </li>
+                                <li class="menu-item <%= IsActive(Request.Url.AbsolutePath, "/ImportExportDetail.aspx") %>">
+                                    <a href="ImportExportDetail.aspx" class="menu-link">
+                                        <div>Chi Tiết Nhập Xuất Hàng Hóa</div>
+                                    </a>
+                                </li>
+                                <li class="menu-item <%= IsActive(Request.Url.AbsolutePath, "/InventoryManagement.aspx") %>">
+                                    <a href="InventoryManagement.aspx" class="menu-link">
+                                        <div>Các Mặt Hàng Trong Kho </div>
+                                    </a>
+                                </li>
+                            </ul>
+                        </li>
+
+                        <li class="menu-item <%= IsOpen(Request.Url.AbsolutePath ,"/DocumentInformation.aspx", "/AuditLog.aspx")%>">
+                            <a href="javascript:void(0);" class="menu-link menu-toggle">
+                                <i class="fas fa-print" style="margin-right: 13px;"></i>
+                                <div>Quản lý ảnh và kiểm toán  </div>
+                            </a>
+                            <ul class="menu-sub">
+                                <li class="menu-item <%= IsActive(Request.Url.AbsolutePath, "/DocumentInformation.aspx") %>">
+                                    <a href="DocumentInformation.aspx" class="menu-link">
+                                        <div>Quản lý ảnh</div>
+                                    </a>
+                                </li>
+                                <li class="menu-item <%= IsActive(Request.Url.AbsolutePath, "/AuditLog.aspx") %>">
+                                    <a href="AuditLog.aspx" class="menu-link">
+                                        <div>Nhật ký kiểm toán </div>
+                                    </a>
+                                </li>
+                            </ul>
+                        </li>
+                        <li class="menu-item <%= IsOpen(Request.Url.AbsolutePath , "/CompanyInformation.aspx", "/CrudBranch.aspx" )%>">
+                            <a href="javascript:void(0);" class="menu-link menu-toggle">
+                                <i class="fas fa-hotel" style="margin-right: 13px;"></i>
+                                <%--<i class="menu-icon tf-icons bx bx-layout"></i>--%>
+                                <div>Quản lý Công ty  </div>
+                            </a>
+                            <ul class="menu-sub">
+                                <li class="menu-item <%= IsActive(Request.Url.AbsolutePath, "/CompanyInformation.aspx") %>">
+                                    <a href="CompanyInformation.aspx" class="menu-link">
+                                        <div>Thông tin công ty</div>
+                                    </a>
+                                </li>
+                                <li class="menu-item <%= IsActive(Request.Url.AbsolutePath, "/CrudBranch.aspx") %>">
+                                    <a href="CrudBranch.aspx" class="menu-link">
+                                        <div>Quản lý chi nhánh</div>
+                                    </a>
+                                </li>
+                            </ul>
+                        </li>
+                        <li class="menu-item <%= IsOpen(Request.Url.AbsolutePath ,  "/Current_stock_quantity.aspx")%>">
+                            <a href="javascript:void(0);" class="menu-link menu-toggle">
+                                <i class="fas fa-warehouse" style="margin-right: 13px;"></i>
+                                <div>Báo Cáo & Thống Kê</div>
+                            </a>
+                            <ul class="menu-sub">
+                                <li class="menu-item <%= IsActive(Request.Url.AbsolutePath, "/Current_stock_quantity.aspx") %>">
+                                    <a href="Current_stock_quantity.aspx" class="menu-link">
+                                        <div>Số Lượng Tồn Kho </div>
+                                    </a>
+                                </li>
+                                <%--<li class="menu-item <%= IsActive(Request.Url.AbsolutePath, "/InventoryManagementKhoDoKS.aspx") %>">
+                                    <a href="InventoryManagementKhoDoKS.aspx" class="menu-link">
+                                        <div>Báo Cáo Đặt Phòng </div>
+                                    </a>
+                                </li>
+                                <li class="menu-item <%= IsActive(Request.Url.AbsolutePath, "/InventoryManagementKhoTP.aspx") %>">
+                                    <a href="InventoryManagementKhoTP.aspx" class="menu-link">
+                                        <div>Báo Cáo Khách Hàng </div>
+                                    </a>
+                                </li>
+                                <li class="menu-item <%= IsActive(Request.Url.AbsolutePath, "/InventoryManagementKhoTP.aspx") %>">
+                                    <a href="InventoryManagementKhoTP.aspx" class="menu-link">
+                                        <div>Báo Cáo Tài Chính </div>
+                                    </a>
+                                </li>--%>
+                            </ul>
+                        </li>
+                    </ul>
+                </aside>
+                <div class="layout-page">
+                    <nav class="layout-navbar container-xxl navbar navbar-expand-xl navbar-detached align-items-center bg-navbar-theme"
+                        id="layout-navbar">
+                        <div class="layout-menu-toggle navbar-nav align-items-xl-center me-3 me-xl-0 d-xl-none">
+                            <a class="nav-item nav-link px-0 me-xl-4" href="javascript:void(0)">
+                                <i class="bx bx-menu bx-sm"></i>
+                            </a>
+                        </div>
+
+                        <div class="navbar-nav-right d-flex align-items-center" id="navbar-collapse">
+                            <div class="navbar-nav align-items-center">
+                                <div class="nav-item d-flex align-items-center " >
+                                    <%--<i class="bx bx-search fs-4 lh-0"></i>--%>
+                                    <div>
+                                        <a href="CrudEmployee.aspx">
+                                            <i class="fas fa-users position-relative iconnav ">
+                                                <b class="titelnav" style="left: -3px;">Nhân Viên</b>
+                                                <b class=" numbernav">
+                                                    <asp:Literal ID="txtemp" runat="server"></asp:Literal>
+                                                </b>
+                                            </i>
+                                        </a>
+                                        <a href="CrudRoom.aspx">
+                                            <i class="fas fa-door-closed position-relative iconnav">
+                                                <b class="titelnav" style="left: 7px;">Phòng</b>
+                                                <b class=" numbernav" style="padding: 4px !important; font-size: 13px !important;">
+                                                    <asp:Literal ID="txtroom" runat="server"></asp:Literal>
+                                                </b>
+                                            </i>
+                                        </a>
+                                        <a href="CrudBranch.aspx">
+                                            <i class="fas fa-hotel position-relative iconnav">
+                                                <b class="titelnav " style="left: -6px;">Chi Nhánh</b>
+                                                <b class=" numbernav">
+                                                    <asp:Literal ID="txtbranch" runat="server"></asp:Literal>
+                                                </b>
+                                            </i>
+                                        </a>
+                                    </div>
+                                    <%--<input type="text" class="form-control border-0 shadow-none ps-1 ps-sm-2" placeholder="Search..." aria-label="Search...">--%>
+                                </div>
+                            </div>
+                            <ul class="navbar-nav flex-row align-items-center ms-auto">
+                                <li class="nav-item navbar-dropdown dropdown-user dropdown">
+                                    <a class="nav-link dropdown-toggle hide-arrow" href="javascript:void(0);" data-bs-toggle="dropdown">
+                                        <div class="avatar avatar-online">
+                                            <asp:Image ID="imgUser" runat="server" CssClass="w-px-40 h-auto rounded-circle" />
+                                        </div>
+                                    </a>
+                                    <ul class="dropdown-menu dropdown-menu-end">
+                                        <li>
+                                            <a class="dropdown-item" href="#">
+                                                <div class="d-flex">
+                                                    <div class="flex-shrink-0 me-3">
+                                                        <div class="avatar avatar-online">
+                                                            <asp:Image ID="Image1" runat="server" CssClass="w-px-40 h-auto rounded-circle" />
+                                                        </div>
+                                                    </div>
+                                                    <div class="flex-grow-1">
+                                                        <asp:Literal ID="litUserName" runat="server"></asp:Literal>
+                                                    </div>
+                                                </div>
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <div class="dropdown-divider"></div>
+                                        </li>
+                                        <li>
+                                            <a class="dropdown-item" href="EditProfile.aspx">
+                                                <i class="bx bx-user me-2"></i>
+                                                <span class="align-middle">Chỉnh Sửa Hồ Sơ</span>
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a class="dropdown-item" href="AccountSettings.aspx">
+                                                <i class="bx bx-cog me-2"></i>
+                                                <span class="align-middle">Cài Đặt Tài Khoản</span>
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <div class="dropdown-divider"></div>
+                                        </li>
+                                        <li>
+                                            <asp:Button ID="btnlogout" CssClass="logout btn btn-primary" runat="server" Text="Đăng Xuất" OnClientClick="return showLogoutModal();" />
+                                        </li>
+                                    </ul>
+                                </li>
+                                <!--/ User -->
+                            </ul>
+                        </div>
+                    </nav>
+                    <div id="toast"></div>
+
+                    <asp:ContentPlaceHolder ID="Content1" runat="server">
+                    </asp:ContentPlaceHolder>
+                </div>
+            </div>
+        </div>
+        <!-- Logout Modal -->
+        <!-- Logout Confirmation Modal -->
+        <div id="overlay" class="overlay"></div>
+        <div id="logoutModal" class="popup bdlayout ">
+            <span style="z-index: 1; position: relative;"
+                class="close-btn" id="btnCancel"><b>X</b></span>
+            <h3 style="margin: -21px -20px 18px -20px; border-radius: 8px 8px 0px 0px;">Xác nhận đăng xuất</h3>
+            <p style="font-size: 15px; padding: 0px 0px 16px 0px;">
+                Bạn có chắc chắn muốn đăng xuất không?
+            </p>
+            <div style="position: absolute; right: 15px;">
+                <asp:Button ID="btnConfirmLogout" CssClass="btn btn-outline-primary" runat="server" Text="Có" OnClick="btnlogout_Click" />
+                <button id="btnCancelModal" class="btn btn-outline-danger">Hủy</button>
+            </div>
+        </div>
+        <script>
+            // Toast function
+            function toast({ title = "", message = "", type = "info", duration = 3000 }) {
+                const main = document.getElementById("toast");
+                if (main) {
+                    const toast = document.createElement("div");
+
+                    // Auto remove toast
+                    const autoRemoveId = setTimeout(function () {
+                        main.removeChild(toast);
+                    }, duration + 1000);
+
+                    // Remove toast when clicked
+                    toast.onclick = function (e) {
+                        if (e.target.closest(".toast__close")) {
+                            main.removeChild(toast);
+                            clearTimeout(autoRemoveId);
+                        }
+                    };
+
+                    const icons = {
+                        success: "fas fa-check-circle",
+                        //info: "fas fa-info-circle",
+                        //warning: "fas fa-exclamation-circle",
+                        error: "fas fa-exclamation-circle"
+                    };
+                    const icon = icons[type];
+                    const delay = (duration / 1000).toFixed(2);
+
+                    toast.classList.add("toast", `toast--${type}`);
+                    toast.style.animation = `slideInLefts ease .3s, fadeOut linear 1s ${delay}s forwards`;
+
+                    toast.innerHTML = `
+        <div class="toast__icon">
+            <i class="${icon}"></i>
+        </div>
+        <div class="toast__body">
+            <h3 class="toast__title">${title}</h3>
+            <p class="toast__msg">${message}</p>
+        </div>
+        <div class="toast__close">
+            <i class="fas fa-times"></i>
+        </div>
+    `;
+                    main.appendChild(toast);
+                }
+            }
+            //function showInfoToast() {
+            //    toast({
+            //        title: "Lỗi!!!",
+            //        message: "Bạn đang gặp lỗi hãy thử lại.",
+            //        type: "info",
+            //        duration: 5000
+            //    });
+            //}
+
+            //function showwarningToast() {
+            //    toast({
+            //        title: "Lỗi!!!",
+            //        message: "Bạn đang gặp lỗi hãy thử lại.",
+            //        type: "warning",
+            //        duration: 5000
+            //    });
+            //}
+
+            function showSuccessToast() {
+                toast({
+                    title: "Thành công!",
+                    message: "Bạn đã đặt phòng thành công ở Khách Sạn Lionn.",
+                    type: "success",
+                    duration: 10000
+                });
+                return false;
+            }
+
+            function showErrorToast() {
+                toast({
+                    title: "Thất bại!",
+                    message: "Bạn vui lòng đặt lại phòng khác .Lionn Xin cảm ơn !!!.",
+                    type: "error",
+                    duration: 10000
+                });
+                return false;
+            }
+        </script>
+        <script type="text/javascript">
+            function showLogoutModal() {
+                // Hiển thị overlay và popup
+                document.getElementById('overlay').style.display = 'block';
+                document.getElementById('logoutModal').style.display = 'block';
+
+                // Xử lý sự kiện nút Hủy
+                document.getElementById('btnCancel').onclick = function () {
+                    document.getElementById('overlay').style.display = 'none';
+                    document.getElementById('logoutModal').style.display = 'none';
+                    return false;
+                };
+
+                // Ngăn không cho sự kiện đăng xuất xảy ra lúc này
+                return false;
+            }
+        </script>
+        <%--<script>
+            const quill = new Quill('#editor', {
+                theme: 'snow'
+            });
+        </script>--%>
+        <!-- Popup -->
+        <%--<script src="../App_Themes/Admin_Pages/Layout/assets/vendor/libs/jquery/jquery.js"></script>--%>
+        <script src="../App_Themes/Admin_Pages/Layout/assets/vendor/libs/popper/popper.js"></script>
+        <script src="../App_Themes/Admin_Pages/Layout/assets/vendor/js/bootstrap.js"></script>
+        <script src="../App_Themes/Admin_Pages/Layout/assets/vendor/libs/perfect-scrollbar/perfect-scrollbar.js"></script>
+        <script src="../App_Themes/Admin_Pages/Layout/assets/vendor/js/menu.js"></script>
+        <!-- Place this tag in your head or just before your close body tag. -->
+        <script src="https://cdn.jsdelivr.net/npm/quill@2.0.2/dist/quill.js"></script>
+
+        <script async defer src="https://buttons.github.io/buttons.js"></script>
+        <!-- endbuild -->
+        <!-- Vendors JS -->
+        <script src="../App_Themes/Admin_Pages/Layout/assets/vendor/libs/apex-charts/apexcharts.js"></script>
+
+        <!-- Main JS -->
+        <script src="../App_Themes/Admin_Pages/Layout/assets/js/main.js"></script>
+
+        <!-- Page JS -->
+        <script src="../App_Themes/Admin_Pages/Layout/assets/js/dashboards-analytics.js"></script>
+
+
+    </form>
+</body>
+</html>

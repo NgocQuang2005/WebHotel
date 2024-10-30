@@ -1,0 +1,42 @@
+/*===================== TABLE OF CONTENT =======================
+0.  Library CSS
+1.  Reset Styling
+2.  General Styling (All variable CSS)
+3.  Header 1 ( 3 style)
+4.  Home content (Home 1, Home 2, Home 3)
+5.  Page default (Contact, About, ...)
+6.  Sidebar (Shop, Post, Service, Project)
+7.  Shop (Category, Single)
+8.  Project (Category, Single)
+9.  Footer
+10. Responsive
+=============================================================*/
+/* Google fonts */
+@import url('https://fonts.googleapis.com/css?family=Poppins:100,300,400,400i,500,500i,600,600i,700,700i,800,800i,900,900i');
+@import url('https://fonts.googleapis.com/css?family=Roboto:100,300,300i,400,400i,500,500i,700,700i,900,900i');
+@import url('https://fonts.googleapis.com/css?family=Playfair+Display:400,400i,700,700i,900,900i');
+
+/* Library CSS */
+@import "libs/bootstrap/bootstrap.css";
+@import "libs/awesome/font-awesome.css";
+@import "libs/ionicons/ionicons.css";
+@import "libs/owl-carousel/owl.carousel.css";
+@import "libs/magnific-popup/main.css";
+@import "libs/flexslider/flexslider.css";
+@import "libs/camera/camera.css";
+
+@import "reset-styles.css";
+@import "general.css";
+
+@import "header.css";
+@import "pages.css";
+@import "blog.css";
+@import "shop.css";
+@import "sidebar.css";
+@import "event.css";
+@import "rooms.css";
+
+@import "home.css";
+@import "footer.css";
+@import "responsive.css";
+

@@ -1,0 +1,1100 @@
+﻿<Project ToolsVersion="15.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.1\build\net46\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props" Condition="Exists('..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.1\build\net46\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props')" />
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>
+    </ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{0FEF39C6-4E6F-4C38-8237-74929EC58473}</ProjectGuid>
+    <ProjectTypeGuids>{349c5851-65df-11da-9384-00065b846f21};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>hotel</RootNamespace>
+    <AssemblyName>hotel</AssemblyName>
+    <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
+    <UseIISExpress>true</UseIISExpress>
+    <Use64BitIISExpress />
+    <IISExpressSSLPort>44352</IISExpressSSLPort>
+    <IISExpressAnonymousAuthentication />
+    <IISExpressWindowsAuthentication />
+    <IISExpressUseClassicPipelineMode />
+    <UseGlobalApplicationHostFile />
+    <NuGetPackageImportStamp>
+    </NuGetPackageImportStamp>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Microsoft.Bcl.AsyncInterfaces, Version=8.0.0.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Bcl.AsyncInterfaces.8.0.0\lib\net462\Microsoft.Bcl.AsyncInterfaces.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="Microsoft.Extensions.Configuration, Version=8.0.0.0, Culture=neutral, PublicKeyToken=adb9793829ddae60, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Extensions.Configuration.8.0.0\lib\net462\Microsoft.Extensions.Configuration.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Extensions.Configuration.Abstractions, Version=8.0.0.0, Culture=neutral, PublicKeyToken=adb9793829ddae60, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Extensions.Configuration.Abstractions.8.0.0\lib\net462\Microsoft.Extensions.Configuration.Abstractions.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Extensions.Configuration.FileExtensions, Version=8.0.0.0, Culture=neutral, PublicKeyToken=adb9793829ddae60, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Extensions.Configuration.FileExtensions.8.0.0\lib\net462\Microsoft.Extensions.Configuration.FileExtensions.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Extensions.Configuration.Json, Version=7.0.0.0, Culture=neutral, PublicKeyToken=adb9793829ddae60, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Extensions.Configuration.Json.7.0.0\lib\net462\Microsoft.Extensions.Configuration.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Extensions.FileProviders.Abstractions, Version=8.0.0.0, Culture=neutral, PublicKeyToken=adb9793829ddae60, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Extensions.FileProviders.Abstractions.8.0.0\lib\net462\Microsoft.Extensions.FileProviders.Abstractions.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Extensions.FileProviders.Physical, Version=8.0.0.0, Culture=neutral, PublicKeyToken=adb9793829ddae60, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Extensions.FileProviders.Physical.8.0.0\lib\net462\Microsoft.Extensions.FileProviders.Physical.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Extensions.FileSystemGlobbing, Version=8.0.0.0, Culture=neutral, PublicKeyToken=adb9793829ddae60, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Extensions.FileSystemGlobbing.8.0.0\lib\net462\Microsoft.Extensions.FileSystemGlobbing.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Extensions.Primitives, Version=8.0.0.0, Culture=neutral, PublicKeyToken=adb9793829ddae60, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Extensions.Primitives.8.0.0\lib\net462\Microsoft.Extensions.Primitives.dll</HintPath>
+    </Reference>
+    <Reference Include="Newtonsoft.Json, Version=13.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\packages\Newtonsoft.Json.13.0.3\lib\net45\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Buffers, Version=4.0.3.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Buffers.4.5.1\lib\net461\System.Buffers.dll</HintPath>
+    </Reference>
+    <Reference Include="System.ComponentModel.Composition" />
+    <Reference Include="System.IO, Version=4.1.1.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.IO.4.3.0\lib\net462\System.IO.dll</HintPath>
+      <Private>True</Private>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Memory, Version=4.0.1.2, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Memory.4.5.5\lib\net461\System.Memory.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Numerics" />
+    <Reference Include="System.Numerics.Vectors, Version=4.1.4.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Numerics.Vectors.4.5.0\lib\net46\System.Numerics.Vectors.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Runtime, Version=4.1.1.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Runtime.4.3.0\lib\net462\System.Runtime.dll</HintPath>
+      <Private>True</Private>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Runtime.CompilerServices.Unsafe, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Runtime.CompilerServices.Unsafe.6.0.0\lib\net461\System.Runtime.CompilerServices.Unsafe.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Security.Cryptography.Algorithms, Version=4.2.1.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Security.Cryptography.Algorithms.4.3.1\lib\net463\System.Security.Cryptography.Algorithms.dll</HintPath>
+      <Private>True</Private>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Security.Cryptography.Encoding, Version=4.0.1.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Security.Cryptography.Encoding.4.3.0\lib\net46\System.Security.Cryptography.Encoding.dll</HintPath>
+      <Private>True</Private>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Security.Cryptography.Primitives, Version=4.0.1.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Security.Cryptography.Primitives.4.3.0\lib\net46\System.Security.Cryptography.Primitives.dll</HintPath>
+      <Private>True</Private>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Text.Encodings.Web, Version=8.0.0.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Text.Encodings.Web.8.0.0\lib\net462\System.Text.Encodings.Web.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Text.Json, Version=8.0.0.3, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Text.Json.8.0.3\lib\net462\System.Text.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Threading.Tasks.Extensions, Version=4.2.0.1, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Threading.Tasks.Extensions.4.5.4\lib\net461\System.Threading.Tasks.Extensions.dll</HintPath>
+    </Reference>
+    <Reference Include="System.ValueTuple, Version=4.0.3.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.ValueTuple.4.5.0\lib\net47\System.ValueTuple.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.DynamicData" />
+    <Reference Include="System.Web.Entity" />
+    <Reference Include="System.Web.ApplicationServices" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Web.Extensions" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Web.Services" />
+    <Reference Include="System.EnterpriseServices" />
+  </ItemGroup>
+  <ItemGroup>
+    <Reference Include="Microsoft.CodeDom.Providers.DotNetCompilerPlatform">
+      <HintPath>..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.1\lib\net45\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Admin\AccountSettings.aspx" />
+    <Content Include="Admin\AuditLog.aspx" />
+    <Content Include="Admin\Current_stock_quantity.aspx" />
+    <Content Include="Admin\imgRoom.aspx" />
+    <Content Include="Admin\InventoryManagement.aspx" />
+    <Content Include="Admin\Stock.aspx" />
+    <Content Include="Admin\CompanyInformation.aspx" />
+    <Content Include="Admin\CrudBranch.aspx" />
+    <Content Include="Admin\CrudEmployee.aspx" />
+    <Content Include="Admin\CrudRoom.aspx" />
+    <Content Include="Admin\DocumentInformation.aspx" />
+    <Content Include="Admin\EditProfile.aspx" />
+    <Content Include="Admin\Account.aspx" />
+    <Content Include="Admin\EmployeeSalary.aspx" />
+    <Content Include="Admin\Home.aspx" />
+    <Content Include="Admin\ImportExportDetail.aspx" />
+    <Content Include="Admin\KindOfRoom.aspx" />
+    <Content Include="Admin\ListOfReservations.aspx" />
+    <Content Include="Admin\Login.aspx" />
+    <Content Include="Admin\ManageCustomerContacts.aspx" />
+    <Content Include="Admin\ManageWebsiteContent.aspx" />
+    <Content Include="Admin\StockTransfer.aspx" />
+    <Content Include="Admin\WarehouseInformation.aspx" />
+    <Content Include="App_Themes\Admin_Pages\Layout\assets\css\demo.css" />
+    <Content Include="App_Themes\Admin_Pages\Layout\assets\img\avatars\1.png" />
+    <Content Include="App_Themes\Admin_Pages\Layout\assets\img\avatars\5.png" />
+    <Content Include="App_Themes\Admin_Pages\Layout\assets\img\avatars\6.png" />
+    <Content Include="App_Themes\Admin_Pages\Layout\assets\img\avatars\7.png" />
+    <Content Include="App_Themes\Admin_Pages\Layout\assets\img\avatars\avt.png" />
+    <Content Include="App_Themes\Admin_Pages\Layout\assets\img\backgrounds\18.jpg" />
+    <Content Include="App_Themes\Admin_Pages\Layout\assets\img\elements\1.jpg" />
+    <Content Include="App_Themes\Admin_Pages\Layout\assets\img\elements\11.jpg" />
+    <Content Include="App_Themes\Admin_Pages\Layout\assets\img\elements\12.jpg" />
+    <Content Include="App_Themes\Admin_Pages\Layout\assets\img\elements\13.jpg" />
+    <Content Include="App_Themes\Admin_Pages\Layout\assets\img\elements\17.jpg" />
+    <Content Include="App_Themes\Admin_Pages\Layout\assets\img\elements\18.jpg" />
+    <Content Include="App_Themes\Admin_Pages\Layout\assets\img\elements\19.jpg" />
+    <Content Include="App_Themes\Admin_Pages\Layout\assets\img\elements\2.jpg" />
+    <Content Include="App_Themes\Admin_Pages\Layout\assets\img\elements\20.jpg" />
+    <Content Include="App_Themes\Admin_Pages\Layout\assets\img\elements\3.jpg" />
+    <Content Include="App_Themes\Admin_Pages\Layout\assets\img\elements\4.jpg" />
+    <Content Include="App_Themes\Admin_Pages\Layout\assets\img\elements\5.jpg" />
+    <Content Include="App_Themes\Admin_Pages\Layout\assets\img\elements\7.jpg" />
+    <Content Include="App_Themes\Admin_Pages\Layout\assets\img\favicon\favicon.ico" />
+    <Content Include="App_Themes\Admin_Pages\Layout\assets\img\icons\brands\asana.png" />
+    <Content Include="App_Themes\Admin_Pages\Layout\assets\img\icons\brands\behance.png" />
+    <Content Include="App_Themes\Admin_Pages\Layout\assets\img\icons\brands\dribbble.png" />
+    <Content Include="App_Themes\Admin_Pages\Layout\assets\img\icons\brands\facebook.png" />
+    <Content Include="App_Themes\Admin_Pages\Layout\assets\img\icons\brands\github.png" />
+    <Content Include="App_Themes\Admin_Pages\Layout\assets\img\icons\brands\google.png" />
+    <Content Include="App_Themes\Admin_Pages\Layout\assets\img\icons\brands\instagram.png" />
+    <Content Include="App_Themes\Admin_Pages\Layout\assets\img\icons\brands\mailchimp.png" />
+    <Content Include="App_Themes\Admin_Pages\Layout\assets\img\icons\brands\slack.png" />
+    <Content Include="App_Themes\Admin_Pages\Layout\assets\img\icons\brands\twitter.png" />
+    <Content Include="App_Themes\Admin_Pages\Layout\assets\img\icons\unicons\cc-primary.png" />
+    <Content Include="App_Themes\Admin_Pages\Layout\assets\img\icons\unicons\cc-success.png" />
+    <Content Include="App_Themes\Admin_Pages\Layout\assets\img\icons\unicons\cc-warning.png" />
+    <Content Include="App_Themes\Admin_Pages\Layout\assets\img\icons\unicons\chart-success.png" />
+    <Content Include="App_Themes\Admin_Pages\Layout\assets\img\icons\unicons\chart.png" />
+    <Content Include="App_Themes\Admin_Pages\Layout\assets\img\icons\unicons\paypal.png" />
+    <Content Include="App_Themes\Admin_Pages\Layout\assets\img\icons\unicons\wallet-info.png" />
+    <Content Include="App_Themes\Admin_Pages\Layout\assets\img\icons\unicons\wallet.png" />
+    <Content Include="App_Themes\Admin_Pages\Layout\assets\img\illustrations\girl-doing-yoga-light.png" />
+    <Content Include="App_Themes\Admin_Pages\Layout\assets\img\illustrations\man-with-laptop-light.png" />
+    <Content Include="App_Themes\Admin_Pages\Layout\assets\img\illustrations\page-misc-error-light.png" />
+    <Content Include="App_Themes\Admin_Pages\Layout\assets\img\layouts\layout-container-light.png" />
+    <Content Include="App_Themes\Admin_Pages\Layout\assets\img\layouts\layout-fluid-light.png" />
+    <Content Include="App_Themes\Admin_Pages\Layout\assets\img\layouts\layout-without-menu-light.png" />
+    <Content Include="App_Themes\Admin_Pages\Layout\assets\img\layouts\layout-without-navbar-light.png" />
+    <Content Include="App_Themes\Admin_Pages\Layout\assets\js\config.js" />
+    <Content Include="App_Themes\Admin_Pages\Layout\assets\js\dashboards-analytics.js" />
+    <Content Include="App_Themes\Admin_Pages\Layout\assets\js\extended-ui-perfect-scrollbar.js" />
+    <Content Include="App_Themes\Admin_Pages\Layout\assets\js\form-basic-inputs.js" />
+    <Content Include="App_Themes\Admin_Pages\Layout\assets\js\main.js" />
+    <Content Include="App_Themes\Admin_Pages\Layout\assets\js\pages-account-settings-account.js" />
+    <Content Include="App_Themes\Admin_Pages\Layout\assets\js\ui-modals.js" />
+    <Content Include="App_Themes\Admin_Pages\Layout\assets\js\ui-popover.js" />
+    <Content Include="App_Themes\Admin_Pages\Layout\assets\js\ui-toasts.js" />
+    <Content Include="App_Themes\Admin_Pages\Layout\assets\vendor\css\core.css" />
+    <Content Include="App_Themes\Admin_Pages\Layout\assets\vendor\css\pages\page-account-settings.css" />
+    <Content Include="App_Themes\Admin_Pages\Layout\assets\vendor\css\pages\page-auth.css" />
+    <Content Include="App_Themes\Admin_Pages\Layout\assets\vendor\css\pages\page-icons.css" />
+    <Content Include="App_Themes\Admin_Pages\Layout\assets\vendor\css\pages\page-misc.css" />
+    <Content Include="App_Themes\Admin_Pages\Layout\assets\vendor\css\theme-default.css" />
+    <Content Include="App_Themes\Admin_Pages\Layout\assets\vendor\fonts\boxicons.css" />
+    <Content Include="App_Themes\Admin_Pages\Layout\assets\vendor\fonts\boxicons\boxicons.svg" />
+    <Content Include="App_Themes\Admin_Pages\Layout\assets\vendor\js\bootstrap.js" />
+    <Content Include="App_Themes\Admin_Pages\Layout\assets\vendor\js\helpers.js" />
+    <Content Include="App_Themes\Admin_Pages\Layout\assets\vendor\js\menu.js" />
+    <Content Include="App_Themes\Admin_Pages\Layout\assets\vendor\libs\apex-charts\apex-charts.css" />
+    <Content Include="App_Themes\Admin_Pages\Layout\assets\vendor\libs\apex-charts\apexcharts.js" />
+    <Content Include="App_Themes\Admin_Pages\Layout\assets\vendor\libs\highlight\highlight-github.css" />
+    <Content Include="App_Themes\Admin_Pages\Layout\assets\vendor\libs\highlight\highlight.css" />
+    <Content Include="App_Themes\Admin_Pages\Layout\assets\vendor\libs\highlight\highlight.js" />
+    <Content Include="App_Themes\Admin_Pages\Layout\assets\vendor\libs\jquery\jquery.js" />
+    <Content Include="App_Themes\Admin_Pages\Layout\assets\vendor\libs\masonry\masonry.js" />
+    <Content Include="App_Themes\Admin_Pages\Layout\assets\vendor\libs\perfect-scrollbar\perfect-scrollbar.css" />
+    <Content Include="App_Themes\Admin_Pages\Layout\assets\vendor\libs\perfect-scrollbar\perfect-scrollbar.js" />
+    <Content Include="App_Themes\Admin_Pages\Layout\assets\vendor\libs\popper\popper.js" />
+    <Content Include="App_Themes\Admin_Pages\Layout\js\bootstrap.js" />
+    <Content Include="App_Themes\Admin_Pages\Layout\js\helpers.js" />
+    <Content Include="App_Themes\Admin_Pages\Layout\js\menu.js" />
+    <Content Include="App_Themes\Admin_Pages\Layout\libs\apex-charts\apexcharts.js" />
+    <Content Include="App_Themes\Admin_Pages\Layout\libs\highlight\highlight.js" />
+    <Content Include="App_Themes\Admin_Pages\Layout\libs\jquery\jquery.js" />
+    <Content Include="App_Themes\Admin_Pages\Layout\libs\masonry\masonry.js" />
+    <Content Include="App_Themes\Admin_Pages\Layout\libs\perfect-scrollbar\perfect-scrollbar.js" />
+    <Content Include="App_Themes\Admin_Pages\Layout\libs\popper\popper.js" />
+    <Content Include="App_Themes\Admin_Pages\Layout\tasks\build.js" />
+    <Content Include="App_Themes\Admin_Pages\Layout\tasks\prod.js" />
+    <Content Include="App_Themes\Admin_Pages\login\css\demo.css" />
+    <Content Include="App_Themes\Admin_Pages\login\img\avatars\1.png" />
+    <Content Include="App_Themes\Admin_Pages\login\img\avatars\5.png" />
+    <Content Include="App_Themes\Admin_Pages\login\img\avatars\6.png" />
+    <Content Include="App_Themes\Admin_Pages\login\img\avatars\7.png" />
+    <Content Include="App_Themes\Admin_Pages\login\img\backgrounds\18.jpg" />
+    <Content Include="App_Themes\Admin_Pages\login\img\elements\1.jpg" />
+    <Content Include="App_Themes\Admin_Pages\login\img\elements\11.jpg" />
+    <Content Include="App_Themes\Admin_Pages\login\img\elements\12.jpg" />
+    <Content Include="App_Themes\Admin_Pages\login\img\elements\13.jpg" />
+    <Content Include="App_Themes\Admin_Pages\login\img\elements\17.jpg" />
+    <Content Include="App_Themes\Admin_Pages\login\img\elements\18.jpg" />
+    <Content Include="App_Themes\Admin_Pages\login\img\elements\19.jpg" />
+    <Content Include="App_Themes\Admin_Pages\login\img\elements\2.jpg" />
+    <Content Include="App_Themes\Admin_Pages\login\img\elements\20.jpg" />
+    <Content Include="App_Themes\Admin_Pages\login\img\elements\3.jpg" />
+    <Content Include="App_Themes\Admin_Pages\login\img\elements\4.jpg" />
+    <Content Include="App_Themes\Admin_Pages\login\img\elements\5.jpg" />
+    <Content Include="App_Themes\Admin_Pages\login\img\elements\7.jpg" />
+    <Content Include="App_Themes\Admin_Pages\login\img\favicon\favicon.ico" />
+    <Content Include="App_Themes\Admin_Pages\login\img\icons\brands\asana.png" />
+    <Content Include="App_Themes\Admin_Pages\login\img\icons\brands\behance.png" />
+    <Content Include="App_Themes\Admin_Pages\login\img\icons\brands\dribbble.png" />
+    <Content Include="App_Themes\Admin_Pages\login\img\icons\brands\facebook.png" />
+    <Content Include="App_Themes\Admin_Pages\login\img\icons\brands\github.png" />
+    <Content Include="App_Themes\Admin_Pages\login\img\icons\brands\google.png" />
+    <Content Include="App_Themes\Admin_Pages\login\img\icons\brands\instagram.png" />
+    <Content Include="App_Themes\Admin_Pages\login\img\icons\brands\mailchimp.png" />
+    <Content Include="App_Themes\Admin_Pages\login\img\icons\brands\slack.png" />
+    <Content Include="App_Themes\Admin_Pages\login\img\icons\brands\twitter.png" />
+    <Content Include="App_Themes\Admin_Pages\login\img\icons\unicons\cc-primary.png" />
+    <Content Include="App_Themes\Admin_Pages\login\img\icons\unicons\cc-success.png" />
+    <Content Include="App_Themes\Admin_Pages\login\img\icons\unicons\cc-warning.png" />
+    <Content Include="App_Themes\Admin_Pages\login\img\icons\unicons\chart-success.png" />
+    <Content Include="App_Themes\Admin_Pages\login\img\icons\unicons\chart.png" />
+    <Content Include="App_Themes\Admin_Pages\login\img\icons\unicons\paypal.png" />
+    <Content Include="App_Themes\Admin_Pages\login\img\icons\unicons\wallet-info.png" />
+    <Content Include="App_Themes\Admin_Pages\login\img\icons\unicons\wallet.png" />
+    <Content Include="App_Themes\Admin_Pages\login\img\illustrations\girl-doing-yoga-light.png" />
+    <Content Include="App_Themes\Admin_Pages\login\img\illustrations\man-with-laptop-light.png" />
+    <Content Include="App_Themes\Admin_Pages\login\img\illustrations\page-misc-error-light.png" />
+    <Content Include="App_Themes\Admin_Pages\login\img\layouts\backgroundlogin.jpg" />
+    <Content Include="App_Themes\Admin_Pages\login\img\layouts\layout-container-light.png" />
+    <Content Include="App_Themes\Admin_Pages\login\img\layouts\layout-fluid-light.png" />
+    <Content Include="App_Themes\Admin_Pages\login\img\layouts\layout-without-menu-light.png" />
+    <Content Include="App_Themes\Admin_Pages\login\img\layouts\layout-without-navbar-light.png" />
+    <Content Include="App_Themes\Admin_Pages\login\img\layouts\loginbgr.jpg" />
+    <Content Include="App_Themes\Admin_Pages\login\js\config.js" />
+    <Content Include="App_Themes\Admin_Pages\login\js\dashboards-analytics.js" />
+    <Content Include="App_Themes\Admin_Pages\login\js\extended-ui-perfect-scrollbar.js" />
+    <Content Include="App_Themes\Admin_Pages\login\js\form-basic-inputs.js" />
+    <Content Include="App_Themes\Admin_Pages\login\js\main.js" />
+    <Content Include="App_Themes\Admin_Pages\login\js\pages-account-settings-account.js" />
+    <Content Include="App_Themes\Admin_Pages\login\js\ui-modals.js" />
+    <Content Include="App_Themes\Admin_Pages\login\js\ui-popover.js" />
+    <Content Include="App_Themes\Admin_Pages\login\js\ui-toasts.js" />
+    <Content Include="App_Themes\Admin_Pages\login\vendor\css\core.css" />
+    <Content Include="App_Themes\Admin_Pages\login\vendor\css\pages\page-account-settings.css" />
+    <Content Include="App_Themes\Admin_Pages\login\vendor\css\pages\page-auth.css" />
+    <Content Include="App_Themes\Admin_Pages\login\vendor\css\pages\page-icons.css" />
+    <Content Include="App_Themes\Admin_Pages\login\vendor\css\pages\page-misc.css" />
+    <Content Include="App_Themes\Admin_Pages\login\vendor\css\theme-default.css" />
+    <Content Include="App_Themes\Admin_Pages\login\vendor\fonts\boxicons.css" />
+    <Content Include="App_Themes\Admin_Pages\login\vendor\fonts\boxicons\boxicons.svg" />
+    <Content Include="App_Themes\Admin_Pages\login\vendor\js\bootstrap.js" />
+    <Content Include="App_Themes\Admin_Pages\login\vendor\js\helpers.js" />
+    <Content Include="App_Themes\Admin_Pages\login\vendor\js\menu.js" />
+    <Content Include="App_Themes\Admin_Pages\login\vendor\libs\apex-charts\apex-charts.css" />
+    <Content Include="App_Themes\Admin_Pages\login\vendor\libs\apex-charts\apexcharts.js" />
+    <Content Include="App_Themes\Admin_Pages\login\vendor\libs\highlight\highlight-github.css" />
+    <Content Include="App_Themes\Admin_Pages\login\vendor\libs\highlight\highlight.css" />
+    <Content Include="App_Themes\Admin_Pages\login\vendor\libs\highlight\highlight.js" />
+    <Content Include="App_Themes\Admin_Pages\login\vendor\libs\jquery\jquery.js" />
+    <Content Include="App_Themes\Admin_Pages\login\vendor\libs\masonry\masonry.js" />
+    <Content Include="App_Themes\Admin_Pages\login\vendor\libs\perfect-scrollbar\perfect-scrollbar.css" />
+    <Content Include="App_Themes\Admin_Pages\login\vendor\libs\perfect-scrollbar\perfect-scrollbar.js" />
+    <Content Include="App_Themes\Admin_Pages\login\vendor\libs\popper\popper.js" />
+    <Content Include="App_Themes\Web_Pages\css\blog.css" />
+    <Content Include="App_Themes\Web_Pages\css\core.css" />
+    <Content Include="App_Themes\Web_Pages\css\event.css" />
+    <Content Include="App_Themes\Web_Pages\css\footer.css" />
+    <Content Include="App_Themes\Web_Pages\css\general.css" />
+    <Content Include="App_Themes\Web_Pages\css\header.css" />
+    <Content Include="App_Themes\Web_Pages\css\home.css" />
+    <Content Include="App_Themes\Web_Pages\css\libs\assets\coloredbg.html" />
+    <Content Include="App_Themes\Web_Pages\css\libs\assets\gridtile.html" />
+    <Content Include="App_Themes\Web_Pages\css\libs\assets\gridtile_3x3.html" />
+    <Content Include="App_Themes\Web_Pages\css\libs\assets\gridtile_3x3_white.html" />
+    <Content Include="App_Themes\Web_Pages\css\libs\assets\gridtile_white.html" />
+    <Content Include="App_Themes\Web_Pages\css\libs\awesome\font-awesome.css" />
+    <Content Include="App_Themes\Web_Pages\css\libs\bootstrap\bootstrap.css" />
+    <Content Include="App_Themes\Web_Pages\css\libs\camera\camera.css" />
+    <Content Include="App_Themes\Web_Pages\css\libs\flexslider\flexslider.css" />
+    <Content Include="App_Themes\Web_Pages\css\libs\images\patterns\overlay1.html" />
+    <Content Include="App_Themes\Web_Pages\css\libs\images\patterns\overlay10.html" />
+    <Content Include="App_Themes\Web_Pages\css\libs\images\patterns\overlay2.html" />
+    <Content Include="App_Themes\Web_Pages\css\libs\images\patterns\overlay3.html" />
+    <Content Include="App_Themes\Web_Pages\css\libs\images\patterns\overlay4.html" />
+    <Content Include="App_Themes\Web_Pages\css\libs\images\patterns\overlay5.html" />
+    <Content Include="App_Themes\Web_Pages\css\libs\images\patterns\overlay6.html" />
+    <Content Include="App_Themes\Web_Pages\css\libs\images\patterns\overlay7.html" />
+    <Content Include="App_Themes\Web_Pages\css\libs\images\patterns\overlay8.html" />
+    <Content Include="App_Themes\Web_Pages\css\libs\images\patterns\overlay9.html" />
+    <Content Include="App_Themes\Web_Pages\css\libs\ionicons\ionicons.css" />
+    <Content Include="App_Themes\Web_Pages\css\libs\jquery-ui\jquery-ui.min.css" />
+    <Content Include="App_Themes\Web_Pages\css\libs\magnific-popup\main.css" />
+    <Content Include="App_Themes\Web_Pages\css\libs\owl-carousel\owl.carousel.css" />
+    <Content Include="App_Themes\Web_Pages\css\libs\owl-carousel\owl.video.play.html" />
+    <Content Include="App_Themes\Web_Pages\css\libs\revicons\revicons90c6.svg" />
+    <Content Include="App_Themes\Web_Pages\css\libs\revolution\settings.css" />
+    <Content Include="App_Themes\Web_Pages\css\pages.css" />
+    <Content Include="App_Themes\Web_Pages\css\reset-styles.css" />
+    <Content Include="App_Themes\Web_Pages\css\responsive.css" />
+    <Content Include="App_Themes\Web_Pages\css\rooms.css" />
+    <Content Include="App_Themes\Web_Pages\css\shop.css" />
+    <Content Include="App_Themes\Web_Pages\css\sidebar.css" />
+    <Content Include="App_Themes\Web_Pages\css\style.css" />
+    <Content Include="App_Themes\Web_Pages\fonts\awesome\fontawesome-webfont3e6e.svg" />
+    <Content Include="App_Themes\Web_Pages\fonts\icomoon\icomoon.svg" />
+    <Content Include="App_Themes\Web_Pages\fonts\ionicons\ionicons790f.svg" />
+    <Content Include="App_Themes\Web_Pages\images\blog\author1.jpg" />
+    <Content Include="App_Themes\Web_Pages\images\blog\author2.jpg" />
+    <Content Include="App_Themes\Web_Pages\images\blog\author3.jpg" />
+    <Content Include="App_Themes\Web_Pages\images\blog\figure.jpg" />
+    <Content Include="App_Themes\Web_Pages\images\blog\sidebar.jpg" />
+    <Content Include="App_Themes\Web_Pages\images\blog\single.jpg" />
+    <Content Include="App_Themes\Web_Pages\images\gallery\img-1.jpg" />
+    <Content Include="App_Themes\Web_Pages\images\gallery\img-10.jpg" />
+    <Content Include="App_Themes\Web_Pages\images\gallery\img-11.jpg" />
+    <Content Include="App_Themes\Web_Pages\images\gallery\img-12.jpg" />
+    <Content Include="App_Themes\Web_Pages\images\gallery\img-13.jpg" />
+    <Content Include="App_Themes\Web_Pages\images\gallery\img-14.jpg" />
+    <Content Include="App_Themes\Web_Pages\images\gallery\img-2.jpg" />
+    <Content Include="App_Themes\Web_Pages\images\gallery\img-3.jpg" />
+    <Content Include="App_Themes\Web_Pages\images\gallery\img-4.jpg" />
+    <Content Include="App_Themes\Web_Pages\images\gallery\img-5.jpg" />
+    <Content Include="App_Themes\Web_Pages\images\gallery\img-6.jpg" />
+    <Content Include="App_Themes\Web_Pages\images\gallery\img-7.jpg" />
+    <Content Include="App_Themes\Web_Pages\images\gallery\img-8.jpg" />
+    <Content Include="App_Themes\Web_Pages\images\gallery\img-9.jpg" />
+    <Content Include="App_Themes\Web_Pages\images\gallery\masonry-5.jpg" />
+    <Content Include="App_Themes\Web_Pages\images\gallery\music-party.jpg" />
+    <Content Include="App_Themes\Web_Pages\images\gallery\wedding.jpg" />
+    <Content Include="App_Themes\Web_Pages\images\home\h1-banner.jpg" />
+    <Content Include="App_Themes\Web_Pages\images\home\h1-bg-cover-video.jpg" />
+    <Content Include="App_Themes\Web_Pages\images\home\h1-bg-destinations.jpg" />
+    <Content Include="App_Themes\Web_Pages\images\home\h1-bg-rooms.jpg" />
+    <Content Include="App_Themes\Web_Pages\images\home\h1-bg-testimonials.jpg" />
+    <Content Include="App_Themes\Web_Pages\images\home\h1-img1.jpg" />
+    <Content Include="App_Themes\Web_Pages\images\home\h1-img2.jpg" />
+    <Content Include="App_Themes\Web_Pages\images\home\h2-bg-testimonials.jpg" />
+    <Content Include="App_Themes\Web_Pages\images\home\h2-img1.jpg" />
+    <Content Include="App_Themes\Web_Pages\images\home\h2-img2.jpg" />
+    <Content Include="App_Themes\Web_Pages\images\home\h2-img3.jpg" />
+    <Content Include="App_Themes\Web_Pages\images\home\h2-img4.jpg" />
+    <Content Include="App_Themes\Web_Pages\images\home\h2-instagram1.jpg" />
+    <Content Include="App_Themes\Web_Pages\images\home\h2-instagram2.jpg" />
+    <Content Include="App_Themes\Web_Pages\images\home\h2-instagram3.jpg" />
+    <Content Include="App_Themes\Web_Pages\images\home\h2-instagram4.jpg" />
+    <Content Include="App_Themes\Web_Pages\images\home\h2-instagram5.jpg" />
+    <Content Include="App_Themes\Web_Pages\images\home\h3-bg-quote.jpg" />
+    <Content Include="App_Themes\Web_Pages\images\home\h4-bg-1.jpg" />
+    <Content Include="App_Themes\Web_Pages\images\home\h4-bg-3.jpg" />
+    <Content Include="App_Themes\Web_Pages\images\home\h4-bg-4.jpg" />
+    <Content Include="App_Themes\Web_Pages\images\home\h4-bg-5.jpg" />
+    <Content Include="App_Themes\Web_Pages\images\home\h4-bg-quote.jpg" />
+    <Content Include="App_Themes\Web_Pages\images\home\h4-frame.png" />
+    <Content Include="App_Themes\Web_Pages\images\home\h4-gallery-1.jpg" />
+    <Content Include="App_Themes\Web_Pages\images\home\h4-gallery-2.jpg" />
+    <Content Include="App_Themes\Web_Pages\images\home\h4-gallery-3.jpg" />
+    <Content Include="App_Themes\Web_Pages\images\home\h4-gallery-4.jpg" />
+    <Content Include="App_Themes\Web_Pages\images\home\h4-gallery-5.jpg" />
+    <Content Include="App_Themes\Web_Pages\images\home\h4-gallery-6.jpg" />
+    <Content Include="App_Themes\Web_Pages\images\home\h4-icon1.png" />
+    <Content Include="App_Themes\Web_Pages\images\home\h4-icon2.png" />
+    <Content Include="App_Themes\Web_Pages\images\home\h4-icon3.png" />
+    <Content Include="App_Themes\Web_Pages\images\home\h4-icon4.png" />
+    <Content Include="App_Themes\Web_Pages\images\home\h4-logo1.jpg" />
+    <Content Include="App_Themes\Web_Pages\images\home\h4-logo2.jpg" />
+    <Content Include="App_Themes\Web_Pages\images\home\h4-logo3.jpg" />
+    <Content Include="App_Themes\Web_Pages\images\home\h4-logo4.jpg" />
+    <Content Include="App_Themes\Web_Pages\images\home\h4-map.png" />
+    <Content Include="App_Themes\Web_Pages\images\home\h4-post-1.jpg" />
+    <Content Include="App_Themes\Web_Pages\images\home\h4-post-2.jpg" />
+    <Content Include="App_Themes\Web_Pages\images\home\h4-post-3.jpg" />
+    <Content Include="App_Themes\Web_Pages\images\home\h4-room-1.jpg" />
+    <Content Include="App_Themes\Web_Pages\images\home\h4-room-2.jpg" />
+    <Content Include="App_Themes\Web_Pages\images\home\h4-room-3.jpg" />
+    <Content Include="App_Themes\Web_Pages\images\home\h4-room-4.jpg" />
+    <Content Include="App_Themes\Web_Pages\images\home\h4-room-5.jpg" />
+    <Content Include="App_Themes\Web_Pages\images\home\h4-tourist-1.jpg" />
+    <Content Include="App_Themes\Web_Pages\images\home\h4-tourist-2.jpg" />
+    <Content Include="App_Themes\Web_Pages\images\home\h4-tourist-3.jpg" />
+    <Content Include="App_Themes\Web_Pages\images\home\h4-tourist-4.jpg" />
+    <Content Include="App_Themes\Web_Pages\images\home\h4-tourist-a.jpg" />
+    <Content Include="App_Themes\Web_Pages\images\home\h4-tourist-b.jpg" />
+    <Content Include="App_Themes\Web_Pages\images\home\h4-tourist-c.jpg" />
+    <Content Include="App_Themes\Web_Pages\images\home\h4-tourist-d.jpg" />
+    <Content Include="App_Themes\Web_Pages\images\home\h4-tourist-e.jpg" />
+    <Content Include="App_Themes\Web_Pages\images\home\h4-tourist-f.jpg" />
+    <Content Include="App_Themes\Web_Pages\images\home\h4-travel-1.jpg" />
+    <Content Include="App_Themes\Web_Pages\images\home\h4-travel-2.jpg" />
+    <Content Include="App_Themes\Web_Pages\images\home\h4-travel-3.jpg" />
+    <Content Include="App_Themes\Web_Pages\images\home\h4-travel-4.jpg" />
+    <Content Include="App_Themes\Web_Pages\images\home\h4-travel-a.jpg" />
+    <Content Include="App_Themes\Web_Pages\images\home\h4-travel-b.jpg" />
+    <Content Include="App_Themes\Web_Pages\images\home\h4-travel-c.jpg" />
+    <Content Include="App_Themes\Web_Pages\images\home\h4-video-1.jpg" />
+    <Content Include="App_Themes\Web_Pages\images\home\hotel.mp4" />
+    <Content Include="App_Themes\Web_Pages\images\icons\ajax-loader.gif" />
+    <Content Include="App_Themes\Web_Pages\images\icons\blank.gif" />
+    <Content Include="App_Themes\Web_Pages\images\icons\camera-loader.gif" />
+    <Content Include="App_Themes\Web_Pages\images\icons\camera_skins.png" />
+    <Content Include="App_Themes\Web_Pages\images\icons\favicon.png" />
+    <Content Include="App_Themes\Web_Pages\images\icons\h4-icon-slider.png" />
+    <Content Include="App_Themes\Web_Pages\images\icons\h4-icon.png" />
+    <Content Include="App_Themes\Web_Pages\images\icons\icon-next.png" />
+    <Content Include="App_Themes\Web_Pages\images\icons\language-flags.png" />
+    <Content Include="App_Themes\Web_Pages\images\icons\ui-icons_444444_256x240.png" />
+    <Content Include="App_Themes\Web_Pages\images\icons\ui-icons_555555_256x240.png" />
+    <Content Include="App_Themes\Web_Pages\images\icons\ui-icons_777620_256x240.png" />
+    <Content Include="App_Themes\Web_Pages\images\icons\ui-icons_777777_256x240.png" />
+    <Content Include="App_Themes\Web_Pages\images\icons\ui-icons_cc0000_256x240.png" />
+    <Content Include="App_Themes\Web_Pages\images\icons\ui-icons_ffffff_256x240.png" />
+    <Content Include="App_Themes\Web_Pages\images\icons\weather.png" />
+    <Content Include="App_Themes\Web_Pages\images\logo1-footer.png" />
+    <Content Include="App_Themes\Web_Pages\images\logo1-sticky.png" />
+    <Content Include="App_Themes\Web_Pages\images\logo1.png" />
+    <Content Include="App_Themes\Web_Pages\images\logo2-footer.png" />
+    <Content Include="App_Themes\Web_Pages\images\logo2.png" />
+    <Content Include="App_Themes\Web_Pages\images\logo3.png" />
+    <Content Include="App_Themes\Web_Pages\images\logo4-footer.png" />
+    <Content Include="App_Themes\Web_Pages\images\logo4.png" />
+    <Content Include="App_Themes\Web_Pages\images\page-title\page-title-1.jpg" />
+    <Content Include="App_Themes\Web_Pages\images\page\404_img.jpg" />
+    <Content Include="App_Themes\Web_Pages\images\page\bg-counter-box.jpg" />
+    <Content Include="App_Themes\Web_Pages\images\page\bg-quote-1.jpg" />
+    <Content Include="App_Themes\Web_Pages\images\shop\product-1.jpg" />
+    <Content Include="App_Themes\Web_Pages\images\shop\product-2.jpg" />
+    <Content Include="App_Themes\Web_Pages\images\shop\product-3.jpg" />
+    <Content Include="App_Themes\Web_Pages\images\shop\product-4.jpg" />
+    <Content Include="App_Themes\Web_Pages\images\shop\product-5.jpg" />
+    <Content Include="App_Themes\Web_Pages\images\shop\product-6.jpg" />
+    <Content Include="App_Themes\Web_Pages\images\shop\product-7.jpg" />
+    <Content Include="App_Themes\Web_Pages\images\shop\product-8.jpg" />
+    <Content Include="App_Themes\Web_Pages\images\slides\h1-slider1.jpg" />
+    <Content Include="App_Themes\Web_Pages\images\slides\h1-slider2.jpg" />
+    <Content Include="App_Themes\Web_Pages\images\slides\h1-slider3.jpg" />
+    <Content Include="App_Themes\Web_Pages\images\slides\h3-slider1.jpg" />
+    <Content Include="App_Themes\Web_Pages\images\slides\h3-slider2.jpg" />
+    <Content Include="App_Themes\Web_Pages\images\slides\h3-slider3.jpg" />
+    <Content Include="App_Themes\Web_Pages\images\slides\h4-slider-1.jpg" />
+    <Content Include="App_Themes\Web_Pages\js\libs\bootstrap.min.js" />
+    <Content Include="App_Themes\Web_Pages\js\libs\counter-box.min.js" />
+    <Content Include="App_Themes\Web_Pages\js\libs\daterangepicker.min-date.min.js" />
+    <Content Include="App_Themes\Web_Pages\js\libs\daterangepicker.min.js" />
+    <Content Include="App_Themes\Web_Pages\js\libs\gallery.min.js" />
+    <Content Include="App_Themes\Web_Pages\js\libs\isotope.pkgd.min.js" />
+    <Content Include="App_Themes\Web_Pages\js\libs\jquery-1.12.4.min.js" />
+    <Content Include="App_Themes\Web_Pages\js\libs\jquery-ui.min.js" />
+    <Content Include="App_Themes\Web_Pages\js\libs\jquery.countdown.min.js" />
+    <Content Include="App_Themes\Web_Pages\js\libs\jquery.flexslider-min.js" />
+    <Content Include="App_Themes\Web_Pages\js\libs\jquery.magnific-popup.min.js" />
+    <Content Include="App_Themes\Web_Pages\js\libs\jquery.mb-comingsoon.min.js" />
+    <Content Include="App_Themes\Web_Pages\js\libs\jquery.min.js" />
+    <Content Include="App_Themes\Web_Pages\js\libs\jquery.plugin.min.js" />
+    <Content Include="App_Themes\Web_Pages\js\libs\jquery.thim-content-slider.min.js" />
+    <Content Include="App_Themes\Web_Pages\js\libs\moment.min.js" />
+    <Content Include="App_Themes\Web_Pages\js\libs\owl.carousel.min.js" />
+    <Content Include="App_Themes\Web_Pages\js\libs\revolution\extensions\revolution.extension.actions.min.js" />
+    <Content Include="App_Themes\Web_Pages\js\libs\revolution\extensions\revolution.extension.carousel.min.js" />
+    <Content Include="App_Themes\Web_Pages\js\libs\revolution\extensions\revolution.extension.kenburn.min.js" />
+    <Content Include="App_Themes\Web_Pages\js\libs\revolution\extensions\revolution.extension.layeranimation.min.js" />
+    <Content Include="App_Themes\Web_Pages\js\libs\revolution\extensions\revolution.extension.migration.min.js" />
+    <Content Include="App_Themes\Web_Pages\js\libs\revolution\extensions\revolution.extension.navigation.min.js" />
+    <Content Include="App_Themes\Web_Pages\js\libs\revolution\extensions\revolution.extension.parallax.min.js" />
+    <Content Include="App_Themes\Web_Pages\js\libs\revolution\extensions\revolution.extension.slideanims.min.js" />
+    <Content Include="App_Themes\Web_Pages\js\libs\revolution\extensions\revolution.extension.video.min.js" />
+    <Content Include="App_Themes\Web_Pages\js\libs\revolution\jquery.themepunch.revolution.min.js" />
+    <Content Include="App_Themes\Web_Pages\js\libs\revolution\jquery.themepunch.tools.min.js" />
+    <Content Include="App_Themes\Web_Pages\js\libs\smoothscroll.min.js" />
+    <Content Include="App_Themes\Web_Pages\js\libs\stellar.min.js" />
+    <Content Include="App_Themes\Web_Pages\js\libs\theia-sticky-sidebar.min.js" />
+    <Content Include="App_Themes\Web_Pages\js\theme-customs.js" />
+    <Content Include="App_Themes\Web_Pages\login\css\demo.css" />
+    <Content Include="App_Themes\Web_Pages\login\img\avatars\1.png" />
+    <Content Include="App_Themes\Web_Pages\login\img\avatars\5.png" />
+    <Content Include="App_Themes\Web_Pages\login\img\avatars\6.png" />
+    <Content Include="App_Themes\Web_Pages\login\img\avatars\7.png" />
+    <Content Include="App_Themes\Web_Pages\login\img\backgrounds\18.jpg" />
+    <Content Include="App_Themes\Web_Pages\login\img\elements\1.jpg" />
+    <Content Include="App_Themes\Web_Pages\login\img\elements\11.jpg" />
+    <Content Include="App_Themes\Web_Pages\login\img\elements\12.jpg" />
+    <Content Include="App_Themes\Web_Pages\login\img\elements\13.jpg" />
+    <Content Include="App_Themes\Web_Pages\login\img\elements\17.jpg" />
+    <Content Include="App_Themes\Web_Pages\login\img\elements\18.jpg" />
+    <Content Include="App_Themes\Web_Pages\login\img\elements\19.jpg" />
+    <Content Include="App_Themes\Web_Pages\login\img\elements\2.jpg" />
+    <Content Include="App_Themes\Web_Pages\login\img\elements\20.jpg" />
+    <Content Include="App_Themes\Web_Pages\login\img\elements\3.jpg" />
+    <Content Include="App_Themes\Web_Pages\login\img\elements\4.jpg" />
+    <Content Include="App_Themes\Web_Pages\login\img\elements\5.jpg" />
+    <Content Include="App_Themes\Web_Pages\login\img\elements\7.jpg" />
+    <Content Include="App_Themes\Web_Pages\login\img\favicon\favicon.ico" />
+    <Content Include="App_Themes\Web_Pages\login\img\icons\brands\asana.png" />
+    <Content Include="App_Themes\Web_Pages\login\img\icons\brands\behance.png" />
+    <Content Include="App_Themes\Web_Pages\login\img\icons\brands\dribbble.png" />
+    <Content Include="App_Themes\Web_Pages\login\img\icons\brands\facebook.png" />
+    <Content Include="App_Themes\Web_Pages\login\img\icons\brands\github.png" />
+    <Content Include="App_Themes\Web_Pages\login\img\icons\brands\google.png" />
+    <Content Include="App_Themes\Web_Pages\login\img\icons\brands\instagram.png" />
+    <Content Include="App_Themes\Web_Pages\login\img\icons\brands\mailchimp.png" />
+    <Content Include="App_Themes\Web_Pages\login\img\icons\brands\slack.png" />
+    <Content Include="App_Themes\Web_Pages\login\img\icons\brands\twitter.png" />
+    <Content Include="App_Themes\Web_Pages\login\img\icons\unicons\cc-primary.png" />
+    <Content Include="App_Themes\Web_Pages\login\img\icons\unicons\cc-success.png" />
+    <Content Include="App_Themes\Web_Pages\login\img\icons\unicons\cc-warning.png" />
+    <Content Include="App_Themes\Web_Pages\login\img\icons\unicons\chart-success.png" />
+    <Content Include="App_Themes\Web_Pages\login\img\icons\unicons\chart.png" />
+    <Content Include="App_Themes\Web_Pages\login\img\icons\unicons\paypal.png" />
+    <Content Include="App_Themes\Web_Pages\login\img\icons\unicons\wallet-info.png" />
+    <Content Include="App_Themes\Web_Pages\login\img\icons\unicons\wallet.png" />
+    <Content Include="App_Themes\Web_Pages\login\img\illustrations\girl-doing-yoga-light.png" />
+    <Content Include="App_Themes\Web_Pages\login\img\illustrations\man-with-laptop-light.png" />
+    <Content Include="App_Themes\Web_Pages\login\img\illustrations\page-misc-error-light.png" />
+    <Content Include="App_Themes\Web_Pages\login\img\layouts\layout-container-light.png" />
+    <Content Include="App_Themes\Web_Pages\login\img\layouts\layout-fluid-light.png" />
+    <Content Include="App_Themes\Web_Pages\login\img\layouts\layout-without-menu-light.png" />
+    <Content Include="App_Themes\Web_Pages\login\img\layouts\layout-without-navbar-light.png" />
+    <Content Include="App_Themes\Web_Pages\login\js\config.js" />
+    <Content Include="App_Themes\Web_Pages\login\js\dashboards-analytics.js" />
+    <Content Include="App_Themes\Web_Pages\login\js\extended-ui-perfect-scrollbar.js" />
+    <Content Include="App_Themes\Web_Pages\login\js\form-basic-inputs.js" />
+    <Content Include="App_Themes\Web_Pages\login\js\main.js" />
+    <Content Include="App_Themes\Web_Pages\login\js\pages-account-settings-account.js" />
+    <Content Include="App_Themes\Web_Pages\login\js\ui-modals.js" />
+    <Content Include="App_Themes\Web_Pages\login\js\ui-popover.js" />
+    <Content Include="App_Themes\Web_Pages\login\js\ui-toasts.js" />
+    <Content Include="App_Themes\Web_Pages\login\vendor\css\core.css" />
+    <Content Include="App_Themes\Web_Pages\login\vendor\css\pages\page-account-settings.css" />
+    <Content Include="App_Themes\Web_Pages\login\vendor\css\pages\page-auth.css" />
+    <Content Include="App_Themes\Web_Pages\login\vendor\css\pages\page-icons.css" />
+    <Content Include="App_Themes\Web_Pages\login\vendor\css\pages\page-misc.css" />
+    <Content Include="App_Themes\Web_Pages\login\vendor\css\theme-default.css" />
+    <Content Include="App_Themes\Web_Pages\login\vendor\fonts\boxicons.css" />
+    <Content Include="App_Themes\Web_Pages\login\vendor\fonts\boxicons\boxicons.svg" />
+    <Content Include="App_Themes\Web_Pages\login\vendor\js\bootstrap.js" />
+    <Content Include="App_Themes\Web_Pages\login\vendor\js\helpers.js" />
+    <Content Include="App_Themes\Web_Pages\login\vendor\js\menu.js" />
+    <Content Include="App_Themes\Web_Pages\login\vendor\libs\apex-charts\apex-charts.css" />
+    <Content Include="App_Themes\Web_Pages\login\vendor\libs\apex-charts\apexcharts.js" />
+    <Content Include="App_Themes\Web_Pages\login\vendor\libs\highlight\highlight-github.css" />
+    <Content Include="App_Themes\Web_Pages\login\vendor\libs\highlight\highlight.css" />
+    <Content Include="App_Themes\Web_Pages\login\vendor\libs\highlight\highlight.js" />
+    <Content Include="App_Themes\Web_Pages\login\vendor\libs\jquery\jquery.js" />
+    <Content Include="App_Themes\Web_Pages\login\vendor\libs\masonry\masonry.js" />
+    <Content Include="App_Themes\Web_Pages\login\vendor\libs\perfect-scrollbar\perfect-scrollbar.css" />
+    <Content Include="App_Themes\Web_Pages\login\vendor\libs\perfect-scrollbar\perfect-scrollbar.js" />
+    <Content Include="App_Themes\Web_Pages\login\vendor\libs\popper\popper.js" />
+    <Content Include="Global.asax" />
+    <Content Include="App_Themes\Admin_Pages\Layout\assets\vendor\fonts\boxicons\boxicons.eot" />
+    <Content Include="App_Themes\Admin_Pages\Layout\assets\vendor\fonts\boxicons\boxicons.ttf" />
+    <Content Include="App_Themes\Admin_Pages\Layout\assets\vendor\fonts\boxicons\boxicons.woff" />
+    <Content Include="App_Themes\Admin_Pages\Layout\assets\vendor\fonts\boxicons\boxicons.woff2" />
+    <Content Include="App_Themes\Admin_Pages\Layout\fonts\boxicons.scss" />
+    <Content Include="App_Themes\Admin_Pages\Layout\libs\apex-charts\apex-charts.scss" />
+    <Content Include="App_Themes\Admin_Pages\Layout\libs\highlight\highlight-github.scss" />
+    <Content Include="App_Themes\Admin_Pages\Layout\libs\highlight\highlight.scss" />
+    <Content Include="App_Themes\Admin_Pages\Layout\libs\perfect-scrollbar\perfect-scrollbar.scss" />
+    <Content Include="App_Themes\Admin_Pages\Layout\scss\core.scss" />
+    <Content Include="App_Themes\Admin_Pages\Layout\scss\pages\page-account-settings.scss" />
+    <Content Include="App_Themes\Admin_Pages\Layout\scss\pages\page-auth.scss" />
+    <Content Include="App_Themes\Admin_Pages\Layout\scss\pages\page-icons.scss" />
+    <Content Include="App_Themes\Admin_Pages\Layout\scss\pages\page-misc.scss" />
+    <Content Include="App_Themes\Admin_Pages\Layout\scss\theme-default.scss" />
+    <Content Include="App_Themes\Admin_Pages\Layout\scss\_bootstrap-extended.scss" />
+    <Content Include="App_Themes\Admin_Pages\Layout\scss\_bootstrap-extended\forms\_floating-labels.scss" />
+    <Content Include="App_Themes\Admin_Pages\Layout\scss\_bootstrap-extended\forms\_form-control.scss" />
+    <Content Include="App_Themes\Admin_Pages\Layout\scss\_bootstrap-extended\forms\_form-range.scss" />
+    <Content Include="App_Themes\Admin_Pages\Layout\scss\_bootstrap-extended\forms\_form-select.scss" />
+    <Content Include="App_Themes\Admin_Pages\Layout\scss\_bootstrap-extended\forms\_input-group.scss" />
+    <Content Include="App_Themes\Admin_Pages\Layout\scss\_bootstrap-extended\forms\_labels.scss" />
+    <Content Include="App_Themes\Admin_Pages\Layout\scss\_bootstrap-extended\forms\_validation.scss" />
+    <Content Include="App_Themes\Admin_Pages\Layout\scss\_bootstrap-extended\mixins\_alert.scss" />
+    <Content Include="App_Themes\Admin_Pages\Layout\scss\_bootstrap-extended\mixins\_badge.scss" />
+    <Content Include="App_Themes\Admin_Pages\Layout\scss\_bootstrap-extended\mixins\_buttons.scss" />
+    <Content Include="App_Themes\Admin_Pages\Layout\scss\_bootstrap-extended\mixins\_caret.scss" />
+    <Content Include="App_Themes\Admin_Pages\Layout\scss\_bootstrap-extended\mixins\_dropdown.scss" />
+    <Content Include="App_Themes\Admin_Pages\Layout\scss\_bootstrap-extended\mixins\_forms.scss" />
+    <Content Include="App_Themes\Admin_Pages\Layout\scss\_bootstrap-extended\mixins\_list-group.scss" />
+    <Content Include="App_Themes\Admin_Pages\Layout\scss\_bootstrap-extended\mixins\_misc.scss" />
+    <Content Include="App_Themes\Admin_Pages\Layout\scss\_bootstrap-extended\mixins\_navs.scss" />
+    <Content Include="App_Themes\Admin_Pages\Layout\scss\_bootstrap-extended\mixins\_pagination.scss" />
+    <Content Include="App_Themes\Admin_Pages\Layout\scss\_bootstrap-extended\mixins\_progress.scss" />
+    <Content Include="App_Themes\Admin_Pages\Layout\scss\_bootstrap-extended\mixins\_table-variants.scss" />
+    <Content Include="App_Themes\Admin_Pages\Layout\scss\_bootstrap-extended\mixins\_toasts.scss" />
+    <Content Include="App_Themes\Admin_Pages\Layout\scss\_bootstrap-extended\_accordion.scss" />
+    <Content Include="App_Themes\Admin_Pages\Layout\scss\_bootstrap-extended\_alert.scss" />
+    <Content Include="App_Themes\Admin_Pages\Layout\scss\_bootstrap-extended\_badge.scss" />
+    <Content Include="App_Themes\Admin_Pages\Layout\scss\_bootstrap-extended\_breadcrumb.scss" />
+    <Content Include="App_Themes\Admin_Pages\Layout\scss\_bootstrap-extended\_button-group.scss" />
+    <Content Include="App_Themes\Admin_Pages\Layout\scss\_bootstrap-extended\_buttons.scss" />
+    <Content Include="App_Themes\Admin_Pages\Layout\scss\_bootstrap-extended\_card.scss" />
+    <Content Include="App_Themes\Admin_Pages\Layout\scss\_bootstrap-extended\_carousel.scss" />
+    <Content Include="App_Themes\Admin_Pages\Layout\scss\_bootstrap-extended\_close.scss" />
+    <Content Include="App_Themes\Admin_Pages\Layout\scss\_bootstrap-extended\_dropdown.scss" />
+    <Content Include="App_Themes\Admin_Pages\Layout\scss\_bootstrap-extended\_forms.scss" />
+    <Content Include="App_Themes\Admin_Pages\Layout\scss\_bootstrap-extended\_functions.scss" />
+    <Content Include="App_Themes\Admin_Pages\Layout\scss\_bootstrap-extended\_include.scss" />
+    <Content Include="App_Themes\Admin_Pages\Layout\scss\_bootstrap-extended\_list-group.scss" />
+    <Content Include="App_Themes\Admin_Pages\Layout\scss\_bootstrap-extended\_mixins.scss" />
+    <Content Include="App_Themes\Admin_Pages\Layout\scss\_bootstrap-extended\_modal.scss" />
+    <Content Include="App_Themes\Admin_Pages\Layout\scss\_bootstrap-extended\_nav.scss" />
+    <Content Include="App_Themes\Admin_Pages\Layout\scss\_bootstrap-extended\_navbar.scss" />
+    <Content Include="App_Themes\Admin_Pages\Layout\scss\_bootstrap-extended\_offcanvas.scss" />
+    <Content Include="App_Themes\Admin_Pages\Layout\scss\_bootstrap-extended\_pagination.scss" />
+    <Content Include="App_Themes\Admin_Pages\Layout\scss\_bootstrap-extended\_popover.scss" />
+    <Content Include="App_Themes\Admin_Pages\Layout\scss\_bootstrap-extended\_progress.scss" />
+    <Content Include="App_Themes\Admin_Pages\Layout\scss\_bootstrap-extended\_reboot.scss" />
+    <Content Include="App_Themes\Admin_Pages\Layout\scss\_bootstrap-extended\_root.scss" />
+    <Content Include="App_Themes\Admin_Pages\Layout\scss\_bootstrap-extended\_spinners.scss" />
+    <Content Include="App_Themes\Admin_Pages\Layout\scss\_bootstrap-extended\_tables.scss" />
+    <Content Include="App_Themes\Admin_Pages\Layout\scss\_bootstrap-extended\_toasts.scss" />
+    <Content Include="App_Themes\Admin_Pages\Layout\scss\_bootstrap-extended\_tooltip.scss" />
+    <Content Include="App_Themes\Admin_Pages\Layout\scss\_bootstrap-extended\_type.scss" />
+    <Content Include="App_Themes\Admin_Pages\Layout\scss\_bootstrap-extended\_utilities-ltr.scss" />
+    <Content Include="App_Themes\Admin_Pages\Layout\scss\_bootstrap-extended\_utilities.scss" />
+    <Content Include="App_Themes\Admin_Pages\Layout\scss\_bootstrap-extended\_variables.scss" />
+    <Content Include="App_Themes\Admin_Pages\Layout\scss\_bootstrap.scss" />
+    <Content Include="App_Themes\Admin_Pages\Layout\scss\_colors.scss" />
+    <Content Include="App_Themes\Admin_Pages\Layout\scss\_components.scss" />
+    <Content Include="App_Themes\Admin_Pages\Layout\scss\_components\mixins\_app-brand.scss" />
+    <Content Include="App_Themes\Admin_Pages\Layout\scss\_components\mixins\_avatar.scss" />
+    <Content Include="App_Themes\Admin_Pages\Layout\scss\_components\mixins\_footer.scss" />
+    <Content Include="App_Themes\Admin_Pages\Layout\scss\_components\mixins\_menu.scss" />
+    <Content Include="App_Themes\Admin_Pages\Layout\scss\_components\mixins\_misc.scss" />
+    <Content Include="App_Themes\Admin_Pages\Layout\scss\_components\mixins\_navbar.scss" />
+    <Content Include="App_Themes\Admin_Pages\Layout\scss\_components\mixins\_text-divider.scss" />
+    <Content Include="App_Themes\Admin_Pages\Layout\scss\_components\_app-brand.scss" />
+    <Content Include="App_Themes\Admin_Pages\Layout\scss\_components\_avatar.scss" />
+    <Content Include="App_Themes\Admin_Pages\Layout\scss\_components\_base.scss" />
+    <Content Include="App_Themes\Admin_Pages\Layout\scss\_components\_common.scss" />
+    <Content Include="App_Themes\Admin_Pages\Layout\scss\_components\_footer.scss" />
+    <Content Include="App_Themes\Admin_Pages\Layout\scss\_components\_include.scss" />
+    <Content Include="App_Themes\Admin_Pages\Layout\scss\_components\_layout.scss" />
+    <Content Include="App_Themes\Admin_Pages\Layout\scss\_components\_menu.scss" />
+    <Content Include="App_Themes\Admin_Pages\Layout\scss\_components\_mixins.scss" />
+    <Content Include="App_Themes\Admin_Pages\Layout\scss\_components\_text-divider.scss" />
+    <Content Include="App_Themes\Admin_Pages\Layout\scss\_components\_variables.scss" />
+    <Content Include="App_Themes\Admin_Pages\Layout\scss\_custom-variables\_bootstrap-extended.scss" />
+    <Content Include="App_Themes\Admin_Pages\Layout\scss\_custom-variables\_components.scss" />
+    <Content Include="App_Themes\Admin_Pages\Layout\scss\_custom-variables\_libs.scss" />
+    <Content Include="App_Themes\Admin_Pages\Layout\scss\_custom-variables\_pages.scss" />
+    <Content Include="App_Themes\Admin_Pages\Layout\scss\_custom-variables\_support.scss" />
+    <Content Include="App_Themes\Admin_Pages\Layout\scss\_theme\_common.scss" />
+    <Content Include="App_Themes\Admin_Pages\Layout\scss\_theme\_theme.scss" />
+    <Content Include="App_Themes\Web_Pages\login\vendor\fonts\boxicons\boxicons.eot" />
+    <Content Include="App_Themes\Web_Pages\login\vendor\fonts\boxicons\boxicons.ttf" />
+    <Content Include="App_Themes\Web_Pages\login\vendor\fonts\boxicons\boxicons.woff" />
+    <Content Include="App_Themes\Web_Pages\login\vendor\fonts\boxicons\boxicons.woff2" />
+    <None Include="Properties\PublishProfiles\site10644-WebDeploy.pubxml" />
+    <None Include="Scripts\jquery-1.8.0.intellisense.js" />
+    <Content Include="Scripts\jquery-1.8.0.js" />
+    <Content Include="Scripts\jquery-1.8.0.min.js" />
+    <None Include="Scripts\jquery.validate-vsdoc.js" />
+    <Content Include="Scripts\jquery.validate.js" />
+    <Content Include="Scripts\jquery.validate.min.js" />
+    <Content Include="Web.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Admin\AccountSettings.aspx.cs">
+      <DependentUpon>AccountSettings.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Admin\AccountSettings.aspx.designer.cs">
+      <DependentUpon>AccountSettings.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Admin\Admin.Master.cs">
+      <DependentUpon>Admin.Master</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Admin\Admin.Master.designer.cs">
+      <DependentUpon>Admin.Master</DependentUpon>
+    </Compile>
+    <Compile Include="Admin\AuditLog.aspx.cs">
+      <DependentUpon>AuditLog.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Admin\AuditLog.aspx.designer.cs">
+      <DependentUpon>AuditLog.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Admin\Current_stock_quantity.aspx.cs">
+      <DependentUpon>Current_stock_quantity.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Admin\Current_stock_quantity.aspx.designer.cs">
+      <DependentUpon>Current_stock_quantity.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Admin\imgRoom.aspx.cs">
+      <DependentUpon>imgRoom.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Admin\imgRoom.aspx.designer.cs">
+      <DependentUpon>imgRoom.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Admin\InventoryManagement.aspx.cs">
+      <DependentUpon>InventoryManagement.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Admin\InventoryManagement.aspx.designer.cs">
+      <DependentUpon>InventoryManagement.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Admin\Stock.aspx.cs">
+      <DependentUpon>Stock.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Admin\Stock.aspx.designer.cs">
+      <DependentUpon>Stock.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Admin\CompanyInformation.aspx.cs">
+      <DependentUpon>CompanyInformation.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Admin\CompanyInformation.aspx.designer.cs">
+      <DependentUpon>CompanyInformation.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Admin\CrudBranch.aspx.cs">
+      <DependentUpon>CrudBranch.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Admin\CrudBranch.aspx.designer.cs">
+      <DependentUpon>CrudBranch.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Admin\CrudEmployee.aspx.cs">
+      <DependentUpon>CrudEmployee.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Admin\CrudEmployee.aspx.designer.cs">
+      <DependentUpon>CrudEmployee.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Admin\CrudRoom.aspx.cs">
+      <DependentUpon>CrudRoom.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Admin\CrudRoom.aspx.designer.cs">
+      <DependentUpon>CrudRoom.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Admin\DocumentInformation.aspx.cs">
+      <DependentUpon>DocumentInformation.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Admin\DocumentInformation.aspx.designer.cs">
+      <DependentUpon>DocumentInformation.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Admin\EditProfile.aspx.cs">
+      <DependentUpon>EditProfile.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Admin\EditProfile.aspx.designer.cs">
+      <DependentUpon>EditProfile.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Admin\Account.aspx.cs">
+      <DependentUpon>Account.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Admin\Account.aspx.designer.cs">
+      <DependentUpon>Account.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Admin\EmployeeSalary.aspx.cs">
+      <DependentUpon>EmployeeSalary.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Admin\EmployeeSalary.aspx.designer.cs">
+      <DependentUpon>EmployeeSalary.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Admin\Home.aspx.cs">
+      <DependentUpon>Home.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Admin\Home.aspx.designer.cs">
+      <DependentUpon>Home.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Admin\ImportExportDetail.aspx.cs">
+      <DependentUpon>ImportExportDetail.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Admin\ImportExportDetail.aspx.designer.cs">
+      <DependentUpon>ImportExportDetail.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Admin\KindOfRoom.aspx.cs">
+      <DependentUpon>KindOfRoom.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Admin\KindOfRoom.aspx.designer.cs">
+      <DependentUpon>KindOfRoom.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Admin\ListOfReservations.aspx.cs">
+      <DependentUpon>ListOfReservations.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Admin\ListOfReservations.aspx.designer.cs">
+      <DependentUpon>ListOfReservations.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Admin\Login.aspx.cs">
+      <DependentUpon>Login.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Admin\Login.aspx.designer.cs">
+      <DependentUpon>Login.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Admin\ManageCustomerContacts.aspx.cs">
+      <DependentUpon>ManageCustomerContacts.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Admin\ManageCustomerContacts.aspx.designer.cs">
+      <DependentUpon>ManageCustomerContacts.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Admin\ManageWebsiteContent.aspx.cs">
+      <DependentUpon>ManageWebsiteContent.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Admin\ManageWebsiteContent.aspx.designer.cs">
+      <DependentUpon>ManageWebsiteContent.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Admin\StockTransfer.aspx.cs">
+      <DependentUpon>StockTransfer.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Admin\StockTransfer.aspx.designer.cs">
+      <DependentUpon>StockTransfer.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Admin\WarehouseInformation.aspx.cs">
+      <DependentUpon>WarehouseInformation.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Admin\WarehouseInformation.aspx.designer.cs">
+      <DependentUpon>WarehouseInformation.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Global.asax.cs">
+      <DependentUpon>Global.asax</DependentUpon>
+    </Compile>
+    <Compile Include="Model\UserLogin.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Website\AccountSettings.aspx.cs">
+      <DependentUpon>AccountSettings.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Website\AccountSettings.aspx.designer.cs">
+      <DependentUpon>AccountSettings.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Website\Blog.aspx.cs">
+      <DependentUpon>Blog.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Website\Blog.aspx.designer.cs">
+      <DependentUpon>Blog.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Website\Blogcontent.aspx.cs">
+      <DependentUpon>Blogcontent.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Website\Blogcontent.aspx.designer.cs">
+      <DependentUpon>Blogcontent.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Website\BookingOrders.aspx.cs">
+      <DependentUpon>BookingOrders.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Website\BookingOrders.aspx.designer.cs">
+      <DependentUpon>BookingOrders.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Website\Cart.aspx.cs">
+      <DependentUpon>Cart.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Website\Cart.aspx.designer.cs">
+      <DependentUpon>Cart.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Website\Contact.aspx.cs">
+      <DependentUpon>Contact.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Website\Contact.aspx.designer.cs">
+      <DependentUpon>Contact.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Website\EditProfile.aspx.cs">
+      <DependentUpon>EditProfile.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Website\EditProfile.aspx.designer.cs">
+      <DependentUpon>EditProfile.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Website\Event.aspx.cs">
+      <DependentUpon>Event.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Website\Event.aspx.designer.cs">
+      <DependentUpon>Event.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Website\EventContent.aspx.cs">
+      <DependentUpon>EventContent.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Website\EventContent.aspx.designer.cs">
+      <DependentUpon>EventContent.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Website\ForgotPassword.aspx.cs">
+      <DependentUpon>ForgotPassword.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Website\ForgotPassword.aspx.designer.cs">
+      <DependentUpon>ForgotPassword.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Website\Home.aspx.cs">
+      <DependentUpon>Home.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Website\Home.aspx.designer.cs">
+      <DependentUpon>Home.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Website\Login.aspx.cs">
+      <DependentUpon>Login.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Website\Login.aspx.designer.cs">
+      <DependentUpon>Login.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Website\Rooms.aspx.cs">
+      <DependentUpon>Rooms.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Website\Rooms.aspx.designer.cs">
+      <DependentUpon>Rooms.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Website\Roomsingle.aspx.cs">
+      <DependentUpon>Roomsingle.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Website\Roomsingle.aspx.designer.cs">
+      <DependentUpon>Roomsingle.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Website\Signup.aspx.cs">
+      <DependentUpon>Signup.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Website\Signup.aspx.designer.cs">
+      <DependentUpon>Signup.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Website\Websitehotel.Master.cs">
+      <DependentUpon>Websitehotel.Master</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Website\Websitehotel.Master.designer.cs">
+      <DependentUpon>Websitehotel.Master</DependentUpon>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Admin\Admin.Master" />
+    <Content Include="App_Themes\Web_Pages\css\libs\revicons\revicons90c6.eot" />
+    <Content Include="App_Themes\Web_Pages\css\libs\revicons\revicons90c6.ttf" />
+    <Content Include="App_Themes\Web_Pages\css\libs\revicons\revicons90c6.woff" />
+    <Content Include="App_Themes\Web_Pages\fonts\awesome\fontawesome-webfont3e6e.woff" />
+    <Content Include="App_Themes\Web_Pages\fonts\awesome\fontawesome-webfont3e6e.woff2" />
+    <Content Include="App_Themes\Web_Pages\fonts\icomoon\icomoon.eot" />
+    <Content Include="App_Themes\Web_Pages\fonts\icomoon\icomoon.ttf" />
+    <Content Include="App_Themes\Web_Pages\fonts\icomoon\icomoon.woff" />
+    <Content Include="App_Themes\Web_Pages\fonts\ionicons\ionicons790f.eot" />
+    <Content Include="App_Themes\Web_Pages\fonts\ionicons\ionicons790f.ttf" />
+    <Content Include="App_Themes\Web_Pages\fonts\ionicons\ionicons790f.woff" />
+    <Content Include="App_Themes\Admin_Pages\login\vendor\fonts\boxicons\boxicons.eot" />
+    <Content Include="App_Themes\Admin_Pages\login\vendor\fonts\boxicons\boxicons.ttf" />
+    <Content Include="App_Themes\Admin_Pages\login\vendor\fonts\boxicons\boxicons.woff" />
+    <Content Include="App_Themes\Admin_Pages\login\vendor\fonts\boxicons\boxicons.woff2" />
+    <None Include="packages.config" />
+    <None Include="Web.Debug.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </None>
+    <None Include="Web.Release.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </None>
+    <Content Include="Website\AccountSettings.aspx" />
+    <Content Include="Website\Blog.aspx" />
+    <Content Include="Website\Blogcontent.aspx" />
+    <Content Include="Website\BookingOrders.aspx" />
+    <Content Include="Website\Cart.aspx" />
+    <Content Include="Website\Contact.aspx" />
+    <Content Include="Website\EditProfile.aspx" />
+    <Content Include="Website\Event.aspx" />
+    <Content Include="Website\EventContent.aspx" />
+    <Content Include="Website\ForgotPassword.aspx" />
+    <Content Include="Website\Home.aspx" />
+    <Content Include="Website\Login.aspx" />
+    <Content Include="Website\Rooms.aspx" />
+    <Content Include="Website\Roomsingle.aspx" />
+    <Content Include="Website\Signup.aspx" />
+    <Content Include="Website\Websitehotel.Master" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Data\" />
+  </ItemGroup>
+  <PropertyGroup>
+    <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
+    <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
+  </PropertyGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <Import Project="$(VSToolsPath)\WebApplications\Microsoft.WebApplication.targets" Condition="'$(VSToolsPath)' != ''" />
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" Condition="false" />
+  <ProjectExtensions>
+    <VisualStudio>
+      <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}">
+        <WebProjectProperties>
+          <UseIIS>True</UseIIS>
+          <AutoAssignPort>True</AutoAssignPort>
+          <DevelopmentServerPort>50516</DevelopmentServerPort>
+          <DevelopmentServerVPath>/</DevelopmentServerVPath>
+          <IISUrl>https://localhost:44352/</IISUrl>
+          <NTLMAuthentication>False</NTLMAuthentication>
+          <UseCustomServer>False</UseCustomServer>
+          <CustomServerUrl>
+          </CustomServerUrl>
+          <SaveServerSettingsInUserFile>False</SaveServerSettingsInUserFile>
+        </WebProjectProperties>
+      </FlavorProperties>
+    </VisualStudio>
+  </ProjectExtensions>
+  <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
+    <PropertyGroup>
+      <ErrorText>This project references NuGet package(s) that are missing on this computer. Use NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=322105. The missing file is {0}.</ErrorText>
+    </PropertyGroup>
+    <Error Condition="!Exists('..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.1\build\net46\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.1\build\net46\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props'))" />
+  </Target>
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

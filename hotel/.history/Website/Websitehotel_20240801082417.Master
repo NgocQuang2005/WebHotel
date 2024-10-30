@@ -1,0 +1,689 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="Websitehotel.master.cs" Inherits="hotel.Website.Websitehotel" %>
+
+<!DOCTYPE html>
+
+<html>
+<head runat="server">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon" href="../App_Themes/Web_Pages/images/icons/favicon.png">
+    <link rel="stylesheet" href="../App_Themes/Web_Pages/css/libs/jquery-ui/jquery-ui.min.css">
+    <!-- REVOLUTION STYLE SHEETS -->
+    <%-- <link href="../App_Themes/Web_Pages/css/core.css" rel="stylesheet" />--%>
+    <asp:ContentPlaceHolder ID="head" runat="server">
+    </asp:ContentPlaceHolder>
+    <link rel="stylesheet" href="../App_Themes/Web_Pages/css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/brands.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css"
+        integrity="sha512-1ycn6IcaQQ40/MKBW2W4Rhis/DbILU74C1vSrLJxCq57o941Ym01SwNsOMqvEBFlcgUa6xLiPY/NS5R+E6ztJQ=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+   <%-- <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>--%>
+
+<link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
+<script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
+    <style>
+        .bdlayout {
+            border-color: #d9dee3;
+            border-radius: 0.5rem;
+            box-shadow: 0 2px 6px 0 rgba(67, 89, 113, 0.12);
+            background-color: #fff;
+        }
+
+        .popup {
+            position: fixed;
+            top: 34%;
+            left: 50%;
+            width: 100%;
+            max-width: 460px;
+            transform: translate(-50%, -50%);
+            background-color: white;
+            padding: 20px 20px 50px 20px;
+            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+            z-index: 9999;
+            display: none;
+        }
+
+        .title.style-01 {
+            font-family: 'Roboto' !important;
+        }
+
+        .overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.5);
+            display: none;
+            z-index: 9998;
+        }
+
+        .menudx {
+            width: 300px;
+            background-color: aliceblue;
+            margin-top: 5px;
+            right: 0px;
+        }
+
+            .menudx li {
+                padding: 12px;
+            }
+
+        .close-btn {
+            background-color: #fff;
+            border-radius: 0.5rem;
+            opacity: 1;
+            padding: 3px 7px;
+            box-shadow: 0 0.125rem 0.25rem rgba(161, 172, 184, 0.4);
+            transition: all 0.23s ease 0.1s;
+            transform: translate(23px, -25px);
+            border: none;
+            cursor: pointer;
+            float: right;
+        }
+
+        .editandlogin {
+            right: 0px;
+            width: 332px;
+            padding-bottom: 20px;
+            padding-top: 14px;
+        }
+
+            .editandlogin li {
+                width: 100%;
+            }
+
+                .editandlogin li a {
+                    color: #697a8d !important;
+                }
+
+                    .editandlogin li a:hover {
+                        background-color: #f2f2f2 !important;
+                    }
+
+        li.lgoina {
+            position: relative;
+        }
+
+            li.lgoina .logout {
+                position: absolute;
+                right: 9px;
+                top: -16px;
+            }
+
+        .me-2 {
+            margin-right: 0.5rem !important;
+        }
+
+        .hiddenmenu {
+            display: none;
+        }
+
+        .active {
+            color: #ffb400 !important;
+        }
+
+        .connec:hover {
+            color: #fff !important;
+        }
+
+        .numbernav {
+            font-size: 14px;
+            position: absolute;
+            color: #fff;
+            background-color: #86abcf;
+            padding: 1px 6px;
+            border-radius: 50%;
+            right: -9px;
+            top: -9px;
+        }
+
+        #toast {
+            position: fixed;
+            top: 32px;
+            right: 32px;
+            z-index: 999999;
+        }
+
+        .toast {
+            display: flex;
+            align-items: center;
+            background-color: #fff;
+            border-radius: 2px;
+            padding: 20px 0;
+            min-width: 400px;
+            max-width: 450px;
+            border-left: 4px solid;
+            box-shadow: 0 5px 8px rgba(0, 0, 0, 0.08);
+            transition: all linear 0.3s;
+        }
+
+        @keyframes slideInLefts {
+            from {
+                opacity: 0;
+                transform: translateX(calc(100% + 32px));
+            }
+
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        @keyframes fadeOut {
+            to {
+                opacity: 0;
+            }
+        }
+
+        .toast--success {
+            border-color: #47d864;
+        }
+
+            .toast--success .toast__icon {
+                color: #47d864;
+            }
+
+        .toast--info {
+            border-color: #2f86eb;
+        }
+
+            .toast--info .toast__icon {
+                color: #2f86eb;
+            }
+
+        .toast--warning {
+            border-color: #ffc021;
+        }
+
+            .toast--warning .toast__icon {
+                color: #ffc021;
+            }
+
+        .toast--error {
+            border-color: #ff623d;
+        }
+
+            .toast--error .toast__icon {
+                color: #ff623d;
+            }
+
+        .toast + .toast {
+            margin-top: 24px;
+        }
+
+        .toast__icon {
+            font-size: 24px;
+        }
+
+        .toast__icon,
+        .toast__close {
+            padding: 0 16px;
+        }
+
+        .toast__body {
+            flex-grow: 1;
+        }
+
+        .toast__title {
+            font-size: 16px;
+            font-weight: 600;
+            color: #333;
+        }
+        img{
+            object-fit: cover;
+        }
+        .toast__msg {
+            font-size: 14px;
+            color: #888;
+            margin-top: 6px;
+            line-height: 1.5;
+        }
+
+        .toast__close {
+            font-size: 20px;
+            color: rgba(0, 0, 0, 0.3);
+            cursor: pointer;
+        }
+    </style>
+
+</head>
+<body class="demo-3 home ">
+    <form id="form1" runat="server">
+        <%--<div id="preloading" class="color2">
+            <div class="loading-icon">
+                <div class="sk-folding-cube">
+                    <div class="sk-cube1 sk-cube"></div>
+                    <div class="sk-cube2 sk-cube"></div>
+                    <div class="sk-cube4 sk-cube"></div>
+                    <div class="sk-cube3 sk-cube"></div>
+                </div>
+            </div>
+        </div>--%>
+
+        <!-- Wrapper content -->
+        <div id="wrapper-container" class="content-pusher">
+            <div class="overlay-close-menu"></div>
+
+            <!-- Header -->
+            <header id="masthead" class="header-overlay affix-top sticky-header header_v2">
+                <div class="container">
+                    <div class="row">
+                        <div class="header-menu col-sm-12 tm-table">
+                            <div class="menu-mobile-effect navbar-toggle" data-effect="mobile-effect">
+                                <div class="icon-wrap">
+                                    <span class="icon-bar"></span>
+                                    <span class="icon-bar"></span>
+                                    <span class="icon-bar"></span>
+                                </div>
+                            </div>
+                            <div class="width-logo sm-logo table-cell">
+                                <a href="Home.aspx" class="no-sticky-logo" title="Hotel HTML Template">
+                                    <img class="logo" src="../App_Themes/Web_Pages/images/logo3.png" alt="">
+                                    <img class="mobile-logo" src="../App_Themes/Web_Pages/images/logo3.png" alt="">
+                                </a>
+                                <a href="Home.aspx" class="sticky-logo">
+                                    <img src="../App_Themes/Web_Pages/images/logo3.png" alt="">
+                                </a>
+                            </div>
+                            <div class="cart-mobile-effect mobile" style="    margin-left: -40px;">
+                                <a href="Cart.aspx" class="value">
+                                    <i class="fas fa-shopping-cart position-relative" style="font-size: 24px; color: white;">
+                                        <b class=" numbernav">
+                                            <asp:Literal ID="txtcartmobi" runat="server"></asp:Literal>
+                                        </b>
+                                    </i>
+                                </a>
+                            </div>
+                            <div class="width-navigation navigation table-cell">
+                                <ul class="nav main-menu">
+                                    <li class="menu-item">
+                                        <a href="Home.aspx" class="<%= IsActive(Request.Url.AbsolutePath, "/Home.aspx") %>">Trang Chủ</a>
+                                    </li>
+                                    <li class="menu-item">
+                                        <a href="Rooms.aspx" class="<%= IsActive(Request.Url.AbsolutePath, "/Rooms.aspx") %>">Phòng</a>
+                                    </li>
+                                    <li class="menu-item">
+                                        <a href="Blog.aspx" class="<%= IsActive(Request.Url.AbsolutePath, "/Blog.aspx") %>">Bài Viết</a>
+                                    </li>
+                                    <li class="menu-item">
+                                        <a href="Event.aspx" class="<%= IsActive(Request.Url.AbsolutePath, "/Event.aspx") %>">Sự Kiện</a>
+                                    </li>
+                                    <li class="menu-item">
+                                        <a href="Contact.aspx" class="<%= IsActive(Request.Url.AbsolutePath, "/Contact.aspx") %>">Liên Hệ</a>
+                                    </li>
+                                    <li class="menu-item">
+                                        <a href="BookingOrders.aspx" class="<%= IsActive(Request.Url.AbsolutePath, "/BookingOrders.aspx") %>">Đơn Bookings</a>
+                                    </li>
+                                </ul>
+
+                                <div class="header-right ">
+                                    <div class="phone mr-3">
+                                        <a href="Cart.aspx" class="value">
+                                            <i class="fas fa-shopping-cart position-relative" style="font-size: 24px;">
+                                                <b class=" numbernav">
+                                                    <asp:Literal ID="litCartCount" runat="server"></asp:Literal>
+                                                </b>
+                                            </i>
+                                        </a>
+                                    </div>
+                                    <div id="account" runat="server" visible="false" class="position-relative" style="margin-left: 29px;">
+                                        <asp:LinkButton ID="btnedit" runat="server">
+                                            <i class="fas fa-bars" style="font-size: 27px; color: white;"></i>
+                                        </asp:LinkButton>
+                                        <ul id="menu" class="bdlayout position-absolute editandlogin hiddenmenu">
+                                            <li>
+                                                <a class="dropdown-item" href="#">
+                                                    <div class="d-flex">
+                                                        <div class="flex-grow-1">
+                                                            <asp:Literal ID="litUserName" runat="server"></asp:Literal>
+                                                        </div>
+                                                    </div>
+                                                </a>
+                                            </li>
+                                            <li>
+                                                <div class="dropdown-divider"></div>
+                                            </li>
+                                            <li>
+                                                <a class="dropdown-item" href="EditProfile.aspx">
+                                                    <i class="fas fa-user me-2" style="margin-right: 13px !important;"></i>
+                                                    <span class="align-middle">Chỉnh sửa hồ sơ</span>
+                                                </a>
+                                            </li>
+                                            <li>
+                                                <a class="dropdown-item" href="AccountSettings.aspx">
+                                                    <i class="fas fa-user-cog me-2"></i>
+                                                    <span class="align-middle">Cài đặt tài khoản</span>
+                                                </a>
+                                            </li>
+                                            <li>
+                                                <div class="dropdown-divider"></div>
+                                            </li>
+                                            <li class="lgoina">
+                                                <asp:Button ID="btnlogout" CssClass="logout btn btn-primary " runat="server" Text="Đăng Xuất" OnClientClick="return showLogoutModal();" />
+                                            </li>
+                                        </ul>
+                                    </div>
+                                    <div id="connectacc" runat="server" visible="true">
+                                        <a href="Login.aspx" class="btn btn-outline-primary connec">Đăng Nhập</a>
+                                        <a href="Signup.aspx" class="btn btn-outline-info connec">Đăng Ký</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </header>
+            <!-- Mobile menu -->
+            <nav class="visible-xs mobile-menu-container mobile-effect" itemscope itemtype="">
+                <div class="inner-off-canvas">
+                    <div class="menu-mobile-effect navbar-toggle">Close <i class="fa fa-times"></i></div>
+                    <ul class="nav main-menu">
+                        <li class="menu-item ">
+                            <a href="Home.aspx" class="class="<%= IsActive(Request.Url.AbsolutePath, "/Home.aspx") %>">Trang chủ</a>
+                        </li>
+                        <li class="menu-item ">
+                            <a href="Rooms.aspx" class="class="<%= IsActive(Request.Url.AbsolutePath, "/Rooms.aspx") %>">Phòng</a>
+                        </li>
+                        <li class="menu-item ">
+                            <a href="Blog.aspx" class="class="<%= IsActive(Request.Url.AbsolutePath, "/Blog.aspx") %>">Bài viết</a>
+                        </li>
+                        <li class="menu-item ">
+                            <a href="Event.aspx" class="class="<%= IsActive(Request.Url.AbsolutePath, "/Event.aspx") %>">Sự kiện</a>
+                        </li>
+                        <li class="menu-item ">
+                            <a href="Contact.aspx" class="class="<%= IsActive(Request.Url.AbsolutePath, "/Contact.aspx") %>">Liên hệ</a>
+                        </li>
+                        <li class="menu-item ">
+                            <a href="BookingOrders.aspx" class="class="<%= IsActive(Request.Url.AbsolutePath, "/BookingOrders.aspx") %>">Đơn Bookings</a>
+                        </li>
+                        <li class="menu-item " runat="server" id="cdtk" visible="false">
+                            <a href="AccountSettings.aspx" class="class="<%= IsActive(Request.Url.AbsolutePath, "/AccountSettings.aspx") %>">Cài đặt tài khoản</a>
+                        </li>
+                        <li class="menu-item " runat="server" id="cshs" visible="false">
+                            <a href="EditProfile.aspx" class="class="<%= IsActive(Request.Url.AbsolutePath, "/EditProfile.aspx") %>">Chỉnh sửa hồ sơ</a>
+                        </li>
+                         <li class="menu-item " runat="server" id="dnhap" visible="false">
+                             <a href="Login.aspx" class="class="<%= IsActive(Request.Url.AbsolutePath, "/AccountSettings.aspx") %>">Đăng Nhập</a>
+                         </li>
+                         <li class="menu-item " runat="server" id="dxuat" visible="false">
+                             <a href="Signup.aspx" class="class="<%= IsActive(Request.Url.AbsolutePath, "/EditProfile.aspx") %>">Đăng Ký</a>
+                         </li>
+                        <hr style=" margin-top: 0px;"/>
+                        <li  style=" margin-left: 30px;" runat="server" id="dxuattk" visible="false">
+                            <asp:Button ID="btndx" CssClass="logout btn btn-primary " runat="server" Text="Đăng Xuất" OnClientClick="return showLogoutModal();" />
+                        </li>
+                    </ul>
+                </div>
+            </nav>
+
+            <!-- nav.mobile-menu-container -->
+            <!-- Main Content -->
+            <div id="overlay" class="overlay"></div>
+            <div id="logoutModal" class="popup bdlayout ">
+                <span style="z-index: 1; position: relative;"
+                    class="close-btn" id="btnCancel"><b>X</b></span>
+                <h4 style="margin: -21px -20px 18px -20px; border-radius: 8px 8px 0px 0px; padding: 9px 15px; background: #136bbf; opacity: 0.5; color: #fff;">Xác nhận đăng xuất</h4>
+                <p style="font-size: 15px; padding: 0px 0px 16px 0px;">
+                    Bạn có chắc chắn muốn đăng xuất không?
+                </p>
+                <div style="position: absolute; right: 15px;">
+                    <asp:Button ID="btnConfirmLogout" CssClass="btn btn-outline-primary" runat="server" Text="Có" OnClick="btnlogout_Click" />
+                    <button id="btnCancelModal" class="btn btn-outline-danger">Hủy</button>
+                </div>
+            </div>
+            <div id="toast"></div>
+            <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server">
+            </asp:ContentPlaceHolder>
+            <!-- Footer -->
+            <footer id="colophon" class="site-footer footer_v2">
+
+                <div class="footer">
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-sm-4">
+                                <div class="widget-text">
+                                    <img src="../App_Themes/Web_Pages/images/logo2-footer.png" alt="">
+                                    <p class="info-text"> Trang Pages ,Tài Khoản Mạng Xã Hội Của Khách Sạn</p>
+                                    <ul class="social-link square">
+                                        <li><a style=" border-radius: 6px;" class="facebook" href="https://www.facebook.com/thimpress/"><i class="fab fa-facebook"></i></a></li>
+                                        <li><a style=" border-radius: 6px;" class="twitter" href="https://www.twitter.com/thimpress/"><i class="fab fa-twitter"></i></a></li>
+                                        <li><a style=" border-radius: 6px;" class="instagram" href="http://www.thimpress.com/"><i class="fab fa-instagram-square"></i></a></li>
+                                        <li><a style=" border-radius: 6px;" class="pinterest" href="http://www.thimpress.com/"><i class="fab fa-pinterest"></i></a></li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <div class="col-sm-2">
+                                <div class="widget-menu">
+                                    <h3 class="widget-title">Khách Sạn</h3>
+                                    <ul class="menu">
+                                        <li><a href="Home.aspx">Trang Chủ</a></li>
+                                        <li><a href="Event.aspx">Sự Kiện</a></li>
+                                        <li><a href="Blog.aspx">Bài Viết</a></li>
+                                        <li><a href="Contact.aspx">Liên Hệ</a></li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <div class="col-sm-2">
+                                <div class="widget-menu">
+                                    <h3 class="widget-title">DỊCH VỤ</h3>
+                                    <ul class="menu">
+                                        <li><a href="Room.aspx">Phòng</a></li>
+                                        <li><a href="#">Nhà Hàng</a></li>
+                                        <li><a href="#">Tắm Biển</a></li>
+                                        <li><a href="#">Tiện  Nghi</a></li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <div class="col-sm-4">
+                                <div class="widget-menu">
+                                    <h3 class="widget-title">LIÊN  HỆ</h3>
+                                    <div class="footer-location">
+                                        <ul class="info">
+                                            <li class="clearfix"><i class="fa fa-phone"></i>
+                                                <asp:Literal ID="litPhone" runat="server"></asp:Literal>
+                                            </li>
+                                            <li class="clearfix"><i class="fa fa-envelope"></i>
+                                                <asp:Literal ID="litEmail" runat="server"></asp:Literal>
+                                            </li>
+                                            <li class="address clearfix"><i class="fa fa-map-marker"></i>
+                                                <asp:Literal ID="litAddress" runat="server"></asp:Literal>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <%--<div class="copyright">
+                    <div class="container">
+                        <div class="row">
+                            <div class="copyright-content">
+                                <div class="copyright-text col-sm-6">
+                                    <p>© 2018 <a href="https://thimpress.com/">ThimPress</a>. All rights reserved.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>--%>
+            </footer>
+        </div>
+        <!-- wrapper-container -->
+
+        <div id="back-to-top" style="border-radius: 50%;">
+            <i class="ion-ios-arrow-up" aria-hidden="true"></i>
+        </div>
+        <script>
+            // Toast function
+            function toast({ title = "", message = "", type = "info", duration = 3000 }) {
+                const main = document.getElementById("toast");
+                if (main) {
+                    const toast = document.createElement("div");
+
+                    // Auto remove toast
+                    const autoRemoveId = setTimeout(function () {
+                        main.removeChild(toast);
+                    }, duration + 1000);
+
+                    // Remove toast when clicked
+                    toast.onclick = function (e) {
+                        if (e.target.closest(".toast__close")) {
+                            main.removeChild(toast);
+                            clearTimeout(autoRemoveId);
+                        }
+                    };
+
+                    const icons = {
+                        success: "fas fa-check-circle",
+                        //info: "fas fa-info-circle",
+                        warning: "fas fa-exclamation-circle",
+                        error: "fas fa-exclamation-circle"
+                    };
+                    const icon = icons[type];
+                    const delay = (duration / 1000).toFixed(2);
+
+                    toast.classList.add("toast", `toast--${type}`);
+                    toast.style.animation = `slideInLefts ease .3s, fadeOut linear 1s ${delay}s forwards`;
+
+                    toast.innerHTML = `
+                <div class="toast__icon">
+                    <i class="${icon}"></i>
+                </div>
+                <div class="toast__body">
+                    <h3 class="toast__title">${title}</h3>
+                    <p class="toast__msg">${message}</p>
+                </div>
+                <div class="toast__close">
+                    <i class="fas fa-times"></i>
+                </div>
+            `;
+                    main.appendChild(toast);
+                }
+            }
+            //function showInfoToast() {
+            //    toast({
+            //        title: "Lỗi!!!",
+            //        message: "Bạn đang gặp lỗi hãy thử lại.",
+            //        type: "info",
+            //        duration: 5000
+            //    });
+            //}
+
+            function showSuccessSignupToast() {
+                toast({
+                    title: "Thành công!",
+                    message: "Bạn Đã Đăng Ký Tài Khoản Thành Công",
+                    type: "success",
+                    duration: 10000
+                });
+            }
+            function showSuccessHuyBookingToast() {
+                toast({
+                    title: "Thành công!",
+                    message: "Vui Lòng Chờ Xác Nhận Hủy!!!!",
+                    type: "success",
+                    duration: 15000
+                });
+            }
+            function showSuccessToast() {
+                toast({
+                    title: "Thành công!",
+                    message: "Bạn đã đặt phòng thành công , vui lòng kiểm tra đơn hàng ở Đơn Bookings . Xin Cảm Ơn!!!",
+                    type: "success",
+                    duration: 10000
+                });
+                return false;
+            }
+
+            function showWarningToast() {
+                toast({
+                    title: "Thất Bại!",
+                    message: "Phòng này chưa sẵn sàng để đặt , vui lòng chọn phòng khác  !!!.",
+                    type: "warning",
+                    duration: 10000
+                });
+                return false;
+            }
+            function showWarningHuydonToast() {
+                toast({
+                    title: "Thất Bại!",
+                    message: "Bạn không thể hủy đơn này , vì đã quá thời gian hủy  !!!.",
+                    type: "warning",
+                    duration: 10000
+                });
+                return false;
+            }
+            function showWarningSuadonToast() {
+                toast({
+                    title: "Thất Bại!",
+                    message: "Bạn không thể sửa đơn này , vì đã quá thời gian sửa  !!!.",
+                    type: "warning",
+                    duration: 10000
+                });
+                return false;
+            }
+        </script>
+        <script>
+            document.getElementById('<%= btnedit.ClientID %>').onclick = function (event) {
+                event.preventDefault(); // Ngăn chặn hành vi mặc định của LinkButton
+                var menu = document.getElementById('menu');
+                menu.classList.toggle('hiddenmenu');
+            }
+        </script>
+        <script>
+            function showLogoutModal() {
+                // Hiển thị overlay và popup
+                document.getElementById('overlay').style.display = 'block';
+                document.getElementById('logoutModal').style.display = 'block';
+
+                // Xử lý sự kiện nút Hủy
+                document.getElementById('btnCancel').onclick = function () {
+                    document.getElementById('overlay').style.display = 'none';
+                    document.getElementById('logoutModal').style.display = 'none';
+                    return false;
+                };
+
+                // Ngăn không cho sự kiện đăng xuất xảy ra lúc này
+                return false;
+            }
+        </script>
+        
+        <script src="../App_Themes/Web_Pages/js/libs/jquery-1.12.4.min.js"></script>
+        <!-- jquery -->
+        <script src="../App_Themes/Web_Pages/js/libs/stellar.min.js"></script>
+        <!-- parallax -->
+        <script src="../App_Themes/Web_Pages/js/libs/bootstrap.min.js"></script>
+        <!-- Bootstrap -->
+        <script src="../App_Themes/Web_Pages/js/libs/smoothscroll.min.js"></script>
+        <!-- smoothscroll -->
+        <script src="../App_Themes/Web_Pages/js/libs/owl.carousel.min.js"></script>
+        <!-- Owl Carousel -->
+        <script src="../App_Themes/Web_Pages/js/libs/jquery.magnific-popup.min.js"></script>
+        <!-- Magnific Popup -->
+        <script src="../App_Themes/Web_Pages/js/libs/theia-sticky-sidebar.min.js"></script>
+        <!-- Sticky sidebar -->
+        <script src="../App_Themes/Web_Pages/js/libs/counter-box.min.js"></script>
+        <!-- counter -->
+        <script src="../App_Themes/Web_Pages/js/libs/jquery.flexslider-min.js"></script>
+        <!-- flexslider -->
+        <script src="../App_Themes/Web_Pages/js/libs/jquery.thim-content-slider.min.js"></script>
+        <!-- Slider -->
+        <script src="../App_Themes/Web_Pages/js/libs/gallery.min.js"></script>
+        <!-- gallery -->
+        <script src="../App_Themes/Web_Pages/js/libs/moment.min.js"></script>
+        <!-- moment -->
+        <script src="../App_Themes/Web_Pages/js/libs/jquery-ui.min.js"></script>
+        <!-- ui -->
+        <script src="../App_Themes/Web_Pages/js/libs/daterangepicker.min.js"></script>
+        <!-- date -->
+        <script src="../App_Themes/Web_Pages/js/libs/daterangepicker.min-date.min.js"></script>
+        <!-- date2 -->
+        <script src="../App_Themes/Web_Pages/js/theme-customs.js"></script>
+        <!-- Theme Custom -->
+        <asp:ContentPlaceHolder ID="Script" runat="server">
+        </asp:ContentPlaceHolder>
+
+    </form>
+</body>
+</html>
