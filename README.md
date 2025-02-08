@@ -37,7 +37,7 @@
 
 ## 🎬 Hình Ảnh Demo  
 ### **Trang chủ**  
-![Home Page](blob:https://www.pinterest.com/86dc2435-9cc7-40c5-a609-d4024b72cfd9)  
+![Home Page](https://i.pinimg.com/736x/57/cc/dd/57ccdd30bc9a18c569e9f21f9ec83449.jpg)  
 
 ### **Form đặt phòng**  
 ![Form Booking](https://i.pinimg.com/736x/20/7d/81/207d8142b5bf0963153a2658b81b71a7.jpg) 
