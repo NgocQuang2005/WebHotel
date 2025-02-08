@@ -29,7 +29,7 @@
 
 ## 🛠️ Công Nghệ Sử Dụng  
 - **Front-end**: HTML, CSS, JavaScript, Bootstrap, jQuery  
-- **Back-end**: ASP.NET Web Forms / MVC (C#)  
+- **Back-end**: ASP.NET Web Forms  (C#)  
 - **Database**: SQL Server  
 - **Thư viện**: Entity Framework, Select2, DataTables, Quill.js  
 
