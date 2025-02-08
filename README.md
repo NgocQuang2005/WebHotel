@@ -1,4 +1,4 @@
-![image](https://github.com/user-attachments/assets/1cce8cca-2c89-48dc-8743-4baa2edb7d5b)# 🌍 Hotel Booking Website
+![image](https://i.pinimg.com/736x/57/cc/dd/57ccdd30bc9a18c569e9f21f9ec83449.jpg)# 🌍 Hotel Booking Website
 
 ![GitHub Repo](https://img.shields.io/badge/GitHub-Repo-blue?logo=github)
 ![ASP.NET](https://img.shields.io/badge/ASP.NET-Framework-blue?logo=dotnet)
