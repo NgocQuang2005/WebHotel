@@ -44,6 +44,13 @@
 
 ### **Bài viết**  
 ![Article](https://i.pinimg.com/736x/86/03/44/86034402534d0baac28910615680a99c.jpg)  
+
+### **Sự kiện**  
+![Event](https://i.pinimg.com/736x/45/c0/78/45c0783994f19cf85ea6ecae14bb1dbe.jpg)  
+
+### **Liên hệ**  
+![Contact](https://i.pinimg.com/736x/d4/1b/3a/d41b3acef20f7f206977816bbac28813.jpg)  
+
 ---
 
 ## 📂 Cách Chạy Dự Án  
