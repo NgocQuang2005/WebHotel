@@ -63,5 +63,5 @@
 ### 🛠️ **Các bước cài đặt**  
 1️⃣ Clone repo về máy:  
    ```sh
-   git clone https://github.com/your-username/your-repo.git
+   git clone https://github.com/NgocQuang2005/WebHotel.git
    cd your-repo
